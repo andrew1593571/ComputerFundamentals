@@ -1,6 +1,5 @@
 ﻿'Andrew Keller
-'RCET2265
-'Fall 2024
+'RCET2265 Fall 2024
 'Hello World
 'https://github.com/andrew1593571/HelloWorld.git
 
