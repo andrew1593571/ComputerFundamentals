@@ -10,6 +10,13 @@ Module SayMyName
 
     Sub Main()
 
+        Console.BackgroundColor() = ConsoleColor.Red
+        Console.Clear()
+
+        Console.Beep()
+        Console.Beep(200, 1000)
+
+        Console.ReadLine()
     End Sub
 
 End Module
