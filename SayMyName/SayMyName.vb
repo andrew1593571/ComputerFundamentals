@@ -21,7 +21,7 @@ Module SayMyName
         'Reads line from console
         name = Console.ReadLine()
 
-        Console.WriteLine("Hello, " & name & "!")
+        Console.WriteLine($"Hello, {name}!")
 
         Console.ReadLine() 'keeps the console open until the user hits enter
     End Sub
