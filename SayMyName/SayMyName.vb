@@ -11,14 +11,10 @@ Module SayMyName
     Sub Main()
         Dim name As String
 
-        'sets the console background color to Blue
-        Console.BackgroundColor() = ConsoleColor.DarkBlue
-        Console.Clear()
-
         'Writes to console asking for user name
         Console.WriteLine("What is your name?")
 
-        'Reads line from console
+        'Reads line from console containing user name
         name = Console.ReadLine()
 
         Console.WriteLine($"Hello, {name}!")
@@ -29,6 +25,12 @@ Module SayMyName
     Sub consoleSounds()
         Console.Beep()
         Console.Beep(200, 1000) 'beeps at 200Hz for 1000ms
+    End Sub
+
+    Sub consoleColor()
+        'sets the console background color to Blue
+        Console.BackgroundColor() = consoleColor.DarkBlue
+        Console.Clear()
     End Sub
 
 End Module
