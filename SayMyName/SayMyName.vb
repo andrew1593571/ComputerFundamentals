@@ -23,10 +23,12 @@ Module SayMyName
 
         Console.WriteLine("Hello, " & name & "!")
 
-        'Console.Beep() 
-        'Console.Beep(200, 1000) 'beeps at 200Hz for 1000ms
-
         Console.ReadLine() 'keeps the console open until the user hits enter
+    End Sub
+
+    Sub consoleSounds()
+        Console.Beep()
+        Console.Beep(200, 1000) 'beeps at 200Hz for 1000ms
     End Sub
 
 End Module
