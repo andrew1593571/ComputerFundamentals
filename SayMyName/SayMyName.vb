@@ -27,9 +27,9 @@ Module SayMyName
         Console.Beep(200, 1000) 'beeps at 200Hz for 1000ms
     End Sub
 
-    Sub consoleColor()
+    Sub consoleColors()
         'sets the console background color to Blue
-        Console.BackgroundColor() = consoleColor.DarkBlue
+        Console.BackgroundColor() = ConsoleColor.DarkBlue
         Console.Clear()
     End Sub
 
