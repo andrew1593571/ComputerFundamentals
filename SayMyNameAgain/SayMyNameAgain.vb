@@ -17,11 +17,16 @@ Module SayMyNameAgain
         Console.Write("Please enter your name: ")
         userInput = Console.ReadLine()
 
-        Console.WriteLine(userInput)
-
-        'Select Case userInput
-        '    Case 
-        'End Select
+        Select Case userInput
+            Case "Emily"
+                Console.WriteLine("Welcome, Emily!")
+            Case "Joe"
+                Console.WriteLine("Welome, Joe!")
+            Case "Andrew"
+                Console.WriteLine("Haven't you done enough here Andrew?")
+            Case Else
+                Console.WriteLine("Your name is not in the system. Go touch grass.")
+        End Select
         'Do
 
         'Loop Until continueLoop
