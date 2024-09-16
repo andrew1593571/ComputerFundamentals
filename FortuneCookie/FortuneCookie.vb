@@ -1,4 +1,13 @@
-﻿Module FortuneCookie
+﻿Option Explicit On
+Option Strict On
+
+'Andrew Keller
+'RCET2265
+'Fall 2024
+'Fortune Cookie
+'https://github.com/andrew1593571/FortuneCookie.git
+
+Module FortuneCookie
 
     Sub Main()
 
