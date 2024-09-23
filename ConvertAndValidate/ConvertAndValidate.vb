@@ -34,14 +34,14 @@ Module ConvertAndValidate
         Loop
     End Sub
 
-    Function ConversionValid(ByVal convertThisString As String, ByRef toThisInteger As String) As Boolean
-
+    Function ConversionValid(ByVal convertThisString As String, ByRef toThisInteger As Integer) As Boolean
         Dim status As Boolean
 
         Try
-
+            toThisInteger = CInt(convertThisString)
+            status = True
         Catch ex As Exception
-
+            status = False
         End Try
 
         Return status
