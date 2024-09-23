@@ -1,4 +1,7 @@
-﻿Module Module1
+﻿Option Explicit On
+Option Strict On
+
+Module Module1
 
     Sub Main()
 
