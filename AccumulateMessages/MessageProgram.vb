@@ -1,3 +1,11 @@
+Option Explicit On
+Option Strict On
+
+'Andrew Keller
+'RCET2265
+'Fall 2024
+'Accumulate Messages
+'https://github.com/andrew1593571/AccumulateMessages.git
 
 Imports System
 
@@ -9,7 +17,9 @@ Module MessageProgram
     End Sub
 
     Function UserMessages(ByVal newMessage As String, ByVal clear As Boolean) As String
-        'your code here
+        Static Dim messages As String
+
+
         Return messages
     End Function
 
