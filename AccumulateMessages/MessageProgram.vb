@@ -19,6 +19,15 @@ Module MessageProgram
     Function UserMessages(ByVal newMessage As String, ByVal clear As Boolean) As String
         Static Dim messages As String
 
+        If clear Then
+            messages = ""
+        ElseIf newMessage = "" Then
+            messages = messages
+        ElseIf messages = "" Then
+            messages = newMessage
+        Else
+            messages = messages & vbCrLf & newMessage
+        End If
 
         Return messages
     End Function
