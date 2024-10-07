@@ -39,7 +39,7 @@ Module ShuffleTheDeck
         Dim card As Integer
 
         If count >= 52 Then 'if the whole deck has been drawn, do not deal a card
-            drawnCard = "All Cards have been Dealt. Shuffle the Deck."
+            drawnCard = ""
         Else
             Do 'keep getting a random number until the card has not been drawn previously
                 suit = GetRandomNumberInRange(3, 0)
@@ -59,7 +59,7 @@ Module ShuffleTheDeck
     ''' </summary>
     ''' <param name="suit"></param>
     ''' <param name="card"></param>
-    Sub DisplayCard(suit As Integer, card As Integer)
+    Sub DisplayResults(drawnCard As String)
         'set up arrays of proper names for cards
         Dim suitString() As String = {"Spades", "Clubs", "Hearts", "Diamonds"}
         Dim cardString() As String
