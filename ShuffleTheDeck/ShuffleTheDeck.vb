@@ -35,6 +35,8 @@ Module ShuffleTheDeck
                     quit = True
                 Case "S"
                     message = $"Deck has been Shuffled!{vbNewLine}"
+                    ShuffleDeck(dealtCards)
+                    count = 0
                 Case Else
                     quit = False
                     message = ""
@@ -48,11 +50,23 @@ Module ShuffleTheDeck
     End Sub
 
     ''' <summary>
+    ''' puts all cards back in the deck. Sets all values in array to false.
+    ''' </summary>
+    ''' <param name="_dealt"></param>
+    Sub ShuffleDeck(ByRef _dealt(,) As Boolean)
+        For i = 0 To 3
+            For j = 0 To 12
+                _dealt(i, j) = False
+            Next
+        Next
+    End Sub
+
+    ''' <summary>
     ''' Draws a card from the deck and returns a string of what it is
     ''' </summary>
     ''' <param name="dealt"></param>
     ''' <returns></returns>
-    Function DealCard(ByRef dealt(,) As Boolean, ByRef count As Integer) As String
+    Function DealCard(ByRef dealt(,) As Boolean, ByRef _count As Integer) As String
         'set up arrays of proper names for cards
         Dim suitString() As String = {"Spades", "Clubs", "Hearts", "Diamonds"}
         Dim cardString() As String
@@ -62,7 +76,7 @@ Module ShuffleTheDeck
         Dim suit As Integer
         Dim card As Integer
 
-        If count >= 52 Then 'if the whole deck has been drawn, do not deal a card
+        If _count >= 52 Then 'if the whole deck has been drawn, do not deal a card
             drawnCard = ""
         Else
             Do 'keep getting a random number until the card has not been drawn previously
@@ -72,7 +86,7 @@ Module ShuffleTheDeck
 
             dealt(suit, card) = True
             drawnCard = $"{cardString(card)} of {suitString(suit)}"
-            count += 1
+            _count += 1
         End If
 
 
