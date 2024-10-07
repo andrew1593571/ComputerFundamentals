@@ -16,25 +16,42 @@ Module ShuffleTheDeck
         '0 = Ace, 1 = Jack, 2-10 = 2-10, 11 = Queen, 12 = King
 
 
-        Console.WriteLine(GetRandomNumberInRange(3, 0))
-        DisplayCard(2, 5)
+        Console.WriteLine(DealCard(dealtCards))
+
+        Console.ReadLine()
 
     End Sub
 
-
-    Function DealCard(ByRef dealt(,) As Boolean) As String()
+    ''' <summary>
+    ''' Draws a card from the deck and returns a string of what it is
+    ''' </summary>
+    ''' <param name="dealt"></param>
+    ''' <returns></returns>
+    Function DealCard(ByRef dealt(,) As Boolean) As String
         'set up arrays of proper names for cards
         Dim suitString() As String = {"Spades", "Clubs", "Hearts", "Diamonds"}
         Dim cardString() As String
         cardString = {"Ace", "Jack", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Queen", "King"}
 
         Static Dim count As Integer
-        Dim card As String
+        Dim drawnCard As String = ""
+        Dim suit As Integer
+        Dim card As Integer
+
+        If count >= 52 Then 'if the whole deck has been drawn, do not deal a card
+            drawnCard = "All Cards have been Dealt. Shuffle the Deck."
+        Else
+            Do 'keep getting a random number until the card has not been drawn previously
+                suit = GetRandomNumberInRange(3, 0)
+                card = GetRandomNumberInRange(12, 0)
+            Loop While dealt(suit, card)
+
+            dealt(suit, card) = True
+            drawnCard = $"{cardString(card)} of {suitString(suit)}"
+        End If
 
 
-
-
-        Return card
+        Return drawnCard
     End Function
 
     ''' <summary>
