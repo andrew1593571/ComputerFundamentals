@@ -15,13 +15,22 @@ Module ShuffleTheDeck
         'Spades = 0, Clubs = 1, Hearts = 2, Diamonds = 3
         '0 = Ace, 1 = Jack, 2-10 = 2-10, 11 = Queen, 12 = King
 
-        DisplayCard(0, 0)
+        DisplayCard(2, 5)
 
     End Sub
 
-
-    Sub DisplayCard(suit As Integer, number As Integer)
+    ''' <summary>
+    ''' Displays the dealt card to the console in readable format
+    ''' </summary>
+    ''' <param name="suit"></param>
+    ''' <param name="card"></param>
+    Sub DisplayCard(suit As Integer, card As Integer)
+        'set up arrays of proper names for cards
         Dim suitString() As String = {"Spades", "Clubs", "Hearts", "Diamonds"}
+        Dim cardString() As String
+        cardString = {"Ace", "Jack", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Queen", "King"}
+
+        Console.WriteLine($"You have been dealt the {cardString(card)} of {suitString(suit)}")
 
         Console.ReadLine()
     End Sub
