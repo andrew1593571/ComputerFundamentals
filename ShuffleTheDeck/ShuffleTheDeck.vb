@@ -15,11 +15,36 @@ Module ShuffleTheDeck
         'Spades = 0, Clubs = 1, Hearts = 2, Diamonds = 3
         '0 = Ace, 1 = Jack, 2-10 = 2-10, 11 = Queen, 12 = King
 
+        Dim userInput As String
+        Dim quit As Boolean = False
+        Dim count As Integer = 0
+        Dim message As String = ""
 
-        Console.WriteLine(DealCard(dealtCards))
+        Do
+            Console.Clear()
+            Console.Write(message)
+
+            DisplayResults(DealCard(dealtCards, count))
+            Console.WriteLine($"There are {CStr(52 - count)} cards remaining in the deck.")
+            Console.WriteLine("Enter Q to Quit. Enter S to Shuffle. Press Enter to Draw another Card.")
+
+            userInput = Console.ReadLine()
+            Select Case userInput
+                Case "Q"
+                    Console.WriteLine("Have a nice day. Press Enter to quit.")
+                    quit = True
+                Case "S"
+                    message = $"Deck has been Shuffled!{vbNewLine}"
+                Case Else
+                    quit = False
+                    message = ""
+            End Select
+
+        Loop Until quit
+
+
 
         Console.ReadLine()
-
     End Sub
 
     ''' <summary>
@@ -27,13 +52,12 @@ Module ShuffleTheDeck
     ''' </summary>
     ''' <param name="dealt"></param>
     ''' <returns></returns>
-    Function DealCard(ByRef dealt(,) As Boolean) As String
+    Function DealCard(ByRef dealt(,) As Boolean, ByRef count As Integer) As String
         'set up arrays of proper names for cards
         Dim suitString() As String = {"Spades", "Clubs", "Hearts", "Diamonds"}
         Dim cardString() As String
         cardString = {"Ace", "Jack", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Queen", "King"}
 
-        Static Dim count As Integer
         Dim drawnCard As String = ""
         Dim suit As Integer
         Dim card As Integer
@@ -48,6 +72,7 @@ Module ShuffleTheDeck
 
             dealt(suit, card) = True
             drawnCard = $"{cardString(card)} of {suitString(suit)}"
+            count += 1
         End If
 
 
@@ -55,19 +80,15 @@ Module ShuffleTheDeck
     End Function
 
     ''' <summary>
-    ''' Displays the dealt card to the console in readable format
+    ''' Displays the card results
     ''' </summary>
-    ''' <param name="suit"></param>
-    ''' <param name="card"></param>
+    ''' <param name="drawnCard"></param>
     Sub DisplayResults(drawnCard As String)
-        'set up arrays of proper names for cards
-        Dim suitString() As String = {"Spades", "Clubs", "Hearts", "Diamonds"}
-        Dim cardString() As String
-        cardString = {"Ace", "Jack", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Queen", "King"}
-
-        Console.WriteLine($"You have been dealt the {cardString(card)} of {suitString(suit)}")
-
-        Console.ReadLine()
+        If drawnCard = "" Then
+            Console.WriteLine("No cards remaining in the deck. Please Shuffle the Deck.")
+        Else
+            Console.WriteLine($"You have been dealt the {drawnCard}")
+        End If
     End Sub
 
     ''' <summary>
