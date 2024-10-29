@@ -17,30 +17,46 @@ Imports System.Threading.Thread
 Module GalacticIntruders
 
     Sub Main()
-        'Do
-        '    Console.WriteLine(Console.WindowHeight)
-        '    Console.WriteLine(Console.LargestWindowHeight)
-        '    Console.ReadLine()
-        'Loop
+        StoreHeight(Console.BufferHeight)
+        StoreWidth(Console.BufferWidth)
 
-        Console.SetCursorPosition(15, 15)
-        Console.WriteLine(Enemy(0))
-        Console.SetCursorPosition(15, 16)
-        Console.WriteLine(Enemy(1))
+        Dim frame(StoreWidth, StoreHeight) As String
 
-        'Console.MoveBufferArea(0, 0, 5, 2, 15, 15)
+        frame(10, 10) = "|"
+
+        StoreFrame(frame)
+        WriteFrame()
 
         Console.Read()
-
     End Sub
+
+    Function StoreWidth(Optional newWidth As Integer = 0) As Integer
+        Static _width As Integer
+
+        If newWidth <> 0 Then
+            _width = newWidth - 1 'offset width to start at 0
+        End If
+
+        Return _width
+    End Function
+
+    Function StoreHeight(Optional newHeight As Integer = 0) As Integer
+        Static _Height As Integer
+
+        If newHeight <> 0 Then
+            _Height = newHeight - 1 'offset height to start at 0
+        End If
+
+        Return _Height
+    End Function
 
     ''' <summary>
     ''' Stores the current frame as a Function
     ''' </summary>
     ''' <param name="newFrame"></param>
     ''' <returns></returns>
-    Function Frame(Optional newFrame(,) As String = Nothing) As String(,)
-        Static _Frame(120, 30) As String
+    Function StoreFrame(Optional newFrame(,) As String = Nothing) As String(,)
+        Static _Frame(StoreWidth(), StoreHeight()) As String
 
         If newFrame IsNot Nothing Then
             _Frame = newFrame
@@ -48,6 +64,28 @@ Module GalacticIntruders
 
         Return _Frame
     End Function
+
+    ''' <summary>
+    ''' Writes the stored frame to the console
+    ''' </summary>
+    Sub WriteFrame()
+        Dim _text As String = ""
+        For i = 0 To StoreHeight()
+            For j = 0 To StoreWidth()
+                If StoreFrame()(j, i) = "" Then
+                    _text = _text & " "
+                Else
+                    _text = _text & StoreFrame()(j, i)
+                End If
+            Next
+            If i < StoreHeight() Then
+                _text = _text & vbNewLine
+            End If
+        Next
+
+        Console.Clear()
+        Console.Write(_text)
+    End Sub
 
     Function Enemy() As String()
         Dim _enemy(1) As String
