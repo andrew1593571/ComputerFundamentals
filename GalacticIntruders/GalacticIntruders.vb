@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
+Imports System.Net.Mime
 Imports System.Threading.Thread
 
 'TODO
@@ -17,6 +18,7 @@ Imports System.Threading.Thread
 Module GalacticIntruders
 
     Sub Main()
+        'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
         StoreWidth(Console.BufferWidth)
 
@@ -25,6 +27,12 @@ Module GalacticIntruders
         frame(10, 10) = "|"
 
         StoreFrame(frame)
+
+        For i = 0 To 15
+            Do 'loop until enemy added successfully
+            Loop While AddEnemy()
+        Next
+
         WriteFrame()
 
         Console.Read()
@@ -87,17 +95,94 @@ Module GalacticIntruders
         Console.Write(_text)
     End Sub
 
-    Function Enemy() As String()
-        Dim _enemy(1) As String
+    ''' <summary>
+    ''' returns a true if overlap was detected and placement has failed
+    ''' </summary>
+    ''' <returns></returns>
+    Function AddEnemy() As Boolean
+        Dim _overlap As Boolean = False
 
-        'basic pose 1
-        _enemy(0) = "-/8\-"
-        _enemy(1) = " o o "
-        'basic pose 2
-        _enemy(2) = "-\8/-"
-        _enemy(1) = "  ˅  "
+        Dim _position As Integer
+        _position = GetRandomNumberInRange(StoreWidth() - 5)
+
+        Dim _frame(,) As String
+        _frame = StoreFrame()
+
+        For i = 0 To 1
+            For j = 0 To 4
+                If _frame(_position + j, i) <> "" Then
+                    _overlap = True
+                End If
+            Next
+        Next
+        If Not _overlap Then
+            For i = 0 To 1
+                For j = 0 To 4
+                    _frame(_position + j, i) = Enemy()(j, i)
+                Next
+            Next
+            StoreFrame(_frame)
+        End If
+
+        Return _overlap
+    End Function
+
+
+
+    ''' <summary>
+    ''' Returns a 2D array containing the characters for the enemy firing
+    ''' </summary>
+    ''' <returns></returns>
+    Function EnemyFiring() As String(,)
+        Dim _enemyFiring(4, 1) As String
+
+        _enemyFiring(0, 0) = "-"
+        _enemyFiring(1, 0) = "\"
+        _enemyFiring(2, 0) = "8"
+        _enemyFiring(3, 0) = "/"
+        _enemyFiring(4, 0) = "-"
+        _enemyFiring(0, 1) = " "
+        _enemyFiring(1, 1) = " "
+        _enemyFiring(2, 1) = "˅"
+        _enemyFiring(3, 1) = " "
+        _enemyFiring(4, 1) = " "
+
+        Return _enemyFiring
+    End Function
+
+    ''' <summary>
+    ''' Returns a 2D array contaning the characters for the enemy
+    ''' </summary>
+    ''' <returns></returns>
+    Function Enemy() As String(,)
+        Dim _enemy(4, 1) As String
+
+        _enemy(0, 0) = "-"
+        _enemy(1, 0) = "/"
+        _enemy(2, 0) = "8"
+        _enemy(3, 0) = "\"
+        _enemy(4, 0) = "-"
+        _enemy(0, 1) = " "
+        _enemy(1, 1) = "o"
+        _enemy(2, 1) = " "
+        _enemy(3, 1) = "o"
+        _enemy(4, 1) = " "
 
         Return _enemy
     End Function
 
+    ''' <summary>
+    ''' Returns a random number in the specified range
+    ''' </summary>
+    ''' <param name="Max"></param>
+    ''' <param name="Min"></param>
+    ''' <returns></returns>
+    Function GetRandomNumberInRange(Max As Integer, Optional Min As Integer = 0) As Integer
+        Dim randomNumber As Integer
+
+        Randomize(DateTime.Now.Millisecond)
+        randomNumber = CInt(Math.Floor((Rnd() * ((Max - Min) + 1)))) + Min
+
+        Return randomNumber
+    End Function
 End Module
