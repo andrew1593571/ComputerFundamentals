@@ -18,24 +18,39 @@ Imports System.Threading.Thread
 Module GalacticIntruders
 
     Sub Main()
+        Dim gameOver As Boolean = False
+        'Dim moveTime As New Timers.Timer(1000)
+
+        'moveTime.AutoReset = True
+        'moveTime.Enabled = True
+
+        'AddHandler moveTime.Elapsed, AddressOf 
+
+        Dim t As New System.Threading.Thread(AddressOf MoveEnemy)
+
+
         'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
         StoreWidth(Console.BufferWidth)
 
-        Dim frame(StoreWidth, StoreHeight) As String
+        StoreFrame(CreateFrame())
 
-        frame(10, 10) = "|"
-
-        StoreFrame(frame)
-
-        For i = 0 To 15
+        For i = 0 To 4
             Do 'loop until enemy added successfully
             Loop While AddEnemy()
         Next
-
         WriteFrame()
 
-        Console.Read()
+        Console.ReadLine()
+        t.Start()
+
+        'Do
+        '    gameOver = MoveEnemy()
+        '    WriteFrame()
+        '    Sleep(1000)
+        'Loop Until gameOver
+
+        Console.ReadLine()
     End Sub
 
     Function StoreWidth(Optional newWidth As Integer = 0) As Integer
@@ -71,6 +86,18 @@ Module GalacticIntruders
         End If
 
         Return _Frame
+    End Function
+
+    Function CreateFrame() As String(,)
+        Dim _frame(StoreWidth(), StoreHeight()) As String
+
+        For row = 0 To StoreHeight()
+            For column = 0 To StoreWidth()
+                _frame(column, row) = " "
+            Next
+        Next
+
+        Return _frame
     End Function
 
     ''' <summary>
@@ -110,7 +137,7 @@ Module GalacticIntruders
 
         For i = 0 To 1
             For j = 0 To 4
-                If _frame(_position + j, i) <> "" Then
+                If _frame(_position + j, i) <> " " Then
                     _overlap = True
                 End If
             Next
@@ -128,6 +155,111 @@ Module GalacticIntruders
     End Function
 
 
+    Function MoveEnemy() As Boolean
+        Dim _frame(,) As String = StoreFrame()
+        Dim count As Integer = 0
+        Dim newColumn As Integer
+        Dim newRow As Integer
+        Dim _gameOver As Boolean = False
+
+        Do
+            For i = 0 To StoreWidth()
+                For j = 0 To StoreHeight()
+                    If _frame(i, j) = "8" Then
+                        count += 1
+                        removeEnemy(i, j)
+                        If GetRandomNumberInRange(10) < 5 Then
+                            Do
+                                newColumn = GetRandomNumberInRange(-2, 2) + i
+                                newRow = GetRandomNumberInRange(2, 1) + j - 1
+                                If newColumn < 2 Then
+                                    newColumn = 2
+                                ElseIf newColumn > StoreWidth() - 5 Then
+                                    newColumn = StoreWidth() - 5
+                                End If
+                                If newRow > StoreHeight() - 1 Then
+                                    newRow = StoreHeight() - 1
+                                    _gameOver = True
+                                End If
+                            Loop While DrawEnemy(False, newColumn, newRow)
+                        Else
+                            Do
+                                newColumn = GetRandomNumberInRange(-2, 2) + i
+                                newRow = GetRandomNumberInRange(2, 1) + j - 1
+                                If newColumn < 2 Then
+                                    newColumn = 2
+                                ElseIf newColumn > StoreWidth() - 5 Then
+                                    newColumn = StoreWidth() - 5
+                                End If
+                                If newRow > StoreHeight() - 1 Then
+                                    newRow = StoreHeight() - 1
+                                    _gameOver = True
+                                End If
+                            Loop While DrawEnemy(True, newColumn, newRow)
+                        End If
+                    End If
+                Next
+            Next
+
+            StoreFrame(_frame)
+
+            WriteFrame()
+            Sleep(1000)
+        Loop Until _gameOver
+
+        Return _gameOver
+    End Function
+
+    Function DrawEnemy(firing As Boolean, column As Integer, row As Integer) As Boolean
+        Dim _overlap As Boolean = False
+        Dim _enemy(,) As String
+        Dim _frame(,) As String
+        Dim _startColumn As Integer = column - 2
+        _frame = StoreFrame()
+
+        If firing Then
+            _enemy = EnemyFiring()
+        Else
+            _enemy = Enemy()
+        End If
+
+
+        For i = 0 To 1
+            For j = 0 To 4
+                If _frame(_startColumn + j, row + i) <> " " Then
+                    _overlap = True
+                End If
+            Next
+        Next
+        If Not _overlap Then
+            For i = 0 To 1
+                For j = 0 To 4
+                    _frame(_startColumn + j, row + i) = Enemy()(j, i)
+                Next
+            Next
+            StoreFrame(_frame)
+        End If
+
+        Return _overlap
+    End Function
+
+    ''' <summary>
+    ''' Removes the enemy at the given point where the 8 is found
+    ''' </summary>
+    ''' <param name="column"></param>
+    ''' <param name="row"></param>
+    Sub removeEnemy(column As Integer, row As Integer)
+        Dim _frame(,) As String = StoreFrame()
+        _frame(column - 2, row) = " "
+        _frame(column - 1, row) = " "
+        _frame(column, row) = " "
+        _frame(column + 1, row) = " "
+        _frame(column + 2, row) = " "
+        _frame(column - 1, row + 1) = " "
+        _frame(column, row + 1) = " "
+        _frame(column + 1, row + 1) = " "
+        StoreFrame(_frame)
+    End Sub
 
     ''' <summary>
     ''' Returns a 2D array containing the characters for the enemy firing
