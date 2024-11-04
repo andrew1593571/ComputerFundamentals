@@ -26,7 +26,8 @@ Module GalacticIntruders
 
         'AddHandler moveTime.Elapsed, AddressOf 
 
-        Dim t As New System.Threading.Thread(AddressOf MoveEnemy)
+        Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
+        'Dim moveBullets As New System.Threading.Thread(AddressOf moveProjectiles)
 
 
         'Runs the storeHeight and StoreWidth functions at startup
@@ -35,14 +36,17 @@ Module GalacticIntruders
 
         StoreFrame(CreateFrame())
 
-        For i = 0 To 4
+        For i = 0 To 8
             Do 'loop until enemy added successfully
             Loop While AddEnemy()
         Next
         WriteFrame()
 
         Console.ReadLine()
-        t.Start()
+        moveAliens.Start()
+        'moveBullets.Start()
+
+
 
         'Do
         '    gameOver = MoveEnemy()
@@ -155,6 +159,26 @@ Module GalacticIntruders
     End Function
 
 
+    Sub MoveProjectiles()
+        Dim _frame(,) As String = StoreFrame()
+
+        For i = StoreWidth() To 0 Step -1
+            For j = StoreHeight() To 0 Step -1
+                If _frame(i, j) = "." Then
+                    _frame(i, j) = " "
+                    If j + 3 < 30 Then
+                        _frame(i, j + 3) = "."
+                    End If
+                End If
+            Next
+        Next
+
+    End Sub
+
+    ''' <summary>
+    ''' Moves the enemy around on the screen
+    ''' </summary>
+    ''' <returns></returns>
     Function MoveEnemy() As Boolean
         Dim _frame(,) As String = StoreFrame()
         Dim count As Integer = 0
@@ -162,13 +186,17 @@ Module GalacticIntruders
         Dim newRow As Integer
         Dim _gameOver As Boolean = False
 
+
+
         Do
-            For i = 0 To StoreWidth()
-                For j = 0 To StoreHeight()
+            MoveProjectiles()
+
+            For i = StoreWidth() To 0 Step -1
+                For j = StoreHeight() To 0 Step -1
                     If _frame(i, j) = "8" Then
                         count += 1
                         removeEnemy(i, j)
-                        If GetRandomNumberInRange(10) < 5 Then
+                        If GetRandomNumberInRange(10, 0) < 8 Then
                             Do
                                 newColumn = GetRandomNumberInRange(-2, 2) + i
                                 newRow = GetRandomNumberInRange(2, 1) + j - 1
@@ -198,10 +226,11 @@ Module GalacticIntruders
                             Loop While DrawEnemy(True, newColumn, newRow)
                         End If
                     End If
+                    StoreFrame(_frame)
                 Next
             Next
 
-            StoreFrame(_frame)
+
 
             WriteFrame()
             Sleep(1000)
@@ -223,7 +252,6 @@ Module GalacticIntruders
             _enemy = Enemy()
         End If
 
-
         For i = 0 To 1
             For j = 0 To 4
                 If _frame(_startColumn + j, row + i) <> " " Then
@@ -234,9 +262,12 @@ Module GalacticIntruders
         If Not _overlap Then
             For i = 0 To 1
                 For j = 0 To 4
-                    _frame(_startColumn + j, row + i) = Enemy()(j, i)
+                    _frame(_startColumn + j, row + i) = _enemy(j, i)
                 Next
             Next
+            If firing Then
+                _frame(_startColumn + 2, row + 2) = "."
+            End If
             StoreFrame(_frame)
         End If
 
@@ -275,7 +306,7 @@ Module GalacticIntruders
         _enemyFiring(4, 0) = "-"
         _enemyFiring(0, 1) = " "
         _enemyFiring(1, 1) = " "
-        _enemyFiring(2, 1) = "˅"
+        _enemyFiring(2, 1) = "*"
         _enemyFiring(3, 1) = " "
         _enemyFiring(4, 1) = " "
 
