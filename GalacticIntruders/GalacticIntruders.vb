@@ -1,6 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 Imports System.Net.Mime
+Imports System.Security.Cryptography.X509Certificates
 Imports System.Threading.Thread
 
 'TODO
@@ -27,8 +28,9 @@ Module GalacticIntruders
         'AddHandler moveTime.Elapsed, AddressOf 
 
         Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
-        'Dim moveBullets As New System.Threading.Thread(AddressOf moveProjectiles)
+        Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
 
+        Dim refreshScreen As New System.Threading.Thread(AddressOf refreshDisplay)
 
         'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
@@ -44,7 +46,8 @@ Module GalacticIntruders
 
         Console.ReadLine()
         moveAliens.Start()
-        'moveBullets.Start()
+        moveBullets.Start()
+        refreshScreen.Start()
 
 
 
@@ -104,6 +107,15 @@ Module GalacticIntruders
         Return _frame
     End Function
 
+    Sub refreshDisplay()
+        Dim _gameOver As Boolean
+
+        Do
+            WriteFrame()
+            Sleep(1)
+        Loop Until _gameOver
+    End Sub
+
     ''' <summary>
     ''' Writes the stored frame to the console
     ''' </summary>
@@ -160,18 +172,24 @@ Module GalacticIntruders
 
 
     Sub MoveProjectiles()
-        Dim _frame(,) As String = StoreFrame()
+        Dim _frame(,) As String
+        Dim _gameOver As Boolean = False
 
-        For i = StoreWidth() To 0 Step -1
-            For j = StoreHeight() To 0 Step -1
-                If _frame(i, j) = "." Then
-                    _frame(i, j) = " "
-                    If j + 3 < 30 Then
-                        _frame(i, j + 3) = "."
+        Do
+            For i = StoreWidth() To 0 Step -1
+                For j = StoreHeight() To 0 Step -1
+                    _frame = StoreFrame()
+                    If _frame(i, j) = "." Then
+                        _frame(i, j) = " "
+                        If j + 1 < 30 Then
+                            _frame(i, j + 1) = "."
+                        End If
                     End If
-                End If
+                    StoreFrame(_frame)
+                Next
             Next
-        Next
+            Sleep(300)
+        Loop Until _gameOver
 
     End Sub
 
@@ -180,7 +198,7 @@ Module GalacticIntruders
     ''' </summary>
     ''' <returns></returns>
     Function MoveEnemy() As Boolean
-        Dim _frame(,) As String = StoreFrame()
+        Dim _frame(,) As String
         Dim count As Integer = 0
         Dim newColumn As Integer
         Dim newRow As Integer
@@ -189,10 +207,9 @@ Module GalacticIntruders
 
 
         Do
-            MoveProjectiles()
-
             For i = StoreWidth() To 0 Step -1
                 For j = StoreHeight() To 0 Step -1
+                    _frame = StoreFrame()
                     If _frame(i, j) = "8" Then
                         count += 1
                         removeEnemy(i, j)
@@ -230,9 +247,6 @@ Module GalacticIntruders
                 Next
             Next
 
-
-
-            WriteFrame()
             Sleep(1000)
         Loop Until _gameOver
 
@@ -265,7 +279,7 @@ Module GalacticIntruders
                     _frame(_startColumn + j, row + i) = _enemy(j, i)
                 Next
             Next
-            If firing Then
+            If firing And row + 2 < StoreHeight() Then
                 _frame(_startColumn + 2, row + 2) = "."
             End If
             StoreFrame(_frame)
