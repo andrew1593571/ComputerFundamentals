@@ -19,18 +19,11 @@ Imports System.Threading.Thread
 Module GalacticIntruders
 
     Sub Main()
-        Dim gameOver As Boolean = False
-        'Dim moveTime As New Timers.Timer(1000)
-
-        'moveTime.AutoReset = True
-        'moveTime.Enabled = True
-
-        'AddHandler moveTime.Elapsed, AddressOf 
-
         Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
         Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
-
         Dim refreshScreen As New System.Threading.Thread(AddressOf refreshDisplay)
+
+        Dim currentKey As ConsoleKey
 
         'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
@@ -45,11 +38,19 @@ Module GalacticIntruders
         WriteFrame()
 
         Console.ReadLine()
+
+        'starts the game
         moveAliens.Start()
         moveBullets.Start()
         refreshScreen.Start()
 
+        Do 'check every 50ms if the game is over yet
+            Sleep(50)
+        Loop Until gameOver()
+        Console.WriteLine("GAME OVER!!!")
 
+        'If 
+        'Console.WriteLine(ConsoleKey.UpArrow)
 
         'Do
         '    gameOver = MoveEnemy()
@@ -81,6 +82,20 @@ Module GalacticIntruders
     End Function
 
     ''' <summary>
+    ''' stores whether or not the game is over
+    ''' </summary>
+    ''' <param name="status"></param>
+    ''' <returns></returns>
+    Function gameOver(Optional status As Boolean = False) As Boolean
+        Static _gameOver As Boolean
+
+        If status Then
+            _gameOver = True
+        End If
+        Return _gameOver
+    End Function
+
+    ''' <summary>
     ''' Stores the current frame as a Function
     ''' </summary>
     ''' <param name="newFrame"></param>
@@ -95,6 +110,10 @@ Module GalacticIntruders
         Return _Frame
     End Function
 
+    ''' <summary>
+    ''' creates an array the size of the screen full of spaces
+    ''' </summary>
+    ''' <returns></returns>
     Function CreateFrame() As String(,)
         Dim _frame(StoreWidth(), StoreHeight()) As String
 
@@ -107,13 +126,14 @@ Module GalacticIntruders
         Return _frame
     End Function
 
+    ''' <summary>
+    ''' Refreshes the display every 1ms
+    ''' </summary>
     Sub refreshDisplay()
-        Dim _gameOver As Boolean
-
         Do
             WriteFrame()
             Sleep(1)
-        Loop Until _gameOver
+        Loop Until gameOver()
     End Sub
 
     ''' <summary>
@@ -173,7 +193,6 @@ Module GalacticIntruders
 
     Sub MoveProjectiles()
         Dim _frame(,) As String
-        Dim _gameOver As Boolean = False
 
         Do
             For i = StoreWidth() To 0 Step -1
@@ -189,7 +208,7 @@ Module GalacticIntruders
                 Next
             Next
             Sleep(300)
-        Loop Until _gameOver
+        Loop Until gameOver()
 
     End Sub
 
@@ -197,14 +216,11 @@ Module GalacticIntruders
     ''' Moves the enemy around on the screen
     ''' </summary>
     ''' <returns></returns>
-    Function MoveEnemy() As Boolean
+    Sub MoveEnemy()
         Dim _frame(,) As String
         Dim count As Integer = 0
         Dim newColumn As Integer
         Dim newRow As Integer
-        Dim _gameOver As Boolean = False
-
-
 
         Do
             For i = StoreWidth() To 0 Step -1
@@ -224,7 +240,7 @@ Module GalacticIntruders
                                 End If
                                 If newRow > StoreHeight() - 1 Then
                                     newRow = StoreHeight() - 1
-                                    _gameOver = True
+                                    gameOver(True)
                                 End If
                             Loop While DrawEnemy(False, newColumn, newRow)
                         Else
@@ -238,7 +254,7 @@ Module GalacticIntruders
                                 End If
                                 If newRow > StoreHeight() - 1 Then
                                     newRow = StoreHeight() - 1
-                                    _gameOver = True
+                                    gameOver(True)
                                 End If
                             Loop While DrawEnemy(True, newColumn, newRow)
                         End If
@@ -248,10 +264,9 @@ Module GalacticIntruders
             Next
 
             Sleep(1000)
-        Loop Until _gameOver
+        Loop Until gameOver()
 
-        Return _gameOver
-    End Function
+    End Sub
 
     Function DrawEnemy(firing As Boolean, column As Integer, row As Integer) As Boolean
         Dim _overlap As Boolean = False
