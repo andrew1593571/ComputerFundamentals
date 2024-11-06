@@ -1,7 +1,5 @@
 ﻿Option Strict On
 Option Explicit On
-Imports System.Net.Mime
-Imports System.Security.Cryptography.X509Certificates
 Imports System.Threading.Thread
 
 'TODO
@@ -22,8 +20,7 @@ Module GalacticIntruders
         Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
         Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
         Dim refreshScreen As New System.Threading.Thread(AddressOf refreshDisplay)
-
-        Dim currentKey As ConsoleKey
+        Dim player As New System.Threading.Thread(AddressOf PlayerControls)
 
         'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
@@ -35,7 +32,10 @@ Module GalacticIntruders
             Do 'loop until enemy added successfully
             Loop While AddEnemy()
         Next
+
+        PlayerPosition()
         WriteFrame()
+
 
         Console.ReadLine()
 
@@ -43,22 +43,51 @@ Module GalacticIntruders
         moveAliens.Start()
         moveBullets.Start()
         refreshScreen.Start()
+        player.Start()
 
         Do 'check every 50ms if the game is over yet
             Sleep(50)
         Loop Until gameOver()
         Console.WriteLine("GAME OVER!!!")
 
-        'If 
-        'Console.WriteLine(ConsoleKey.UpArrow)
-
-        'Do
-        '    gameOver = MoveEnemy()
-        '    WriteFrame()
-        '    Sleep(1000)
-        'Loop Until gameOver
-
         Console.ReadLine()
+    End Sub
+
+    Sub PlayerControls()
+        Do
+
+            Select Case Console.ReadKey.Key
+                Case ConsoleKey.LeftArrow
+                    PlayerPosition(-1)
+                Case ConsoleKey.RightArrow
+                    PlayerPosition(1)
+            End Select
+        Loop Until gameOver()
+    End Sub
+
+    ''' <summary>
+    ''' Moves the player left or right. direction = True will move move to the right
+    ''' </summary>
+    ''' <param name="direction"></param>
+    Sub movePlayer()
+        Dim _frame(,) As String
+
+        For i = 0 To StoreWidth() Step 1 'scan left to right
+            For j = StoreHeight() To StoreHeight() - 2 Step -1 'scan bottom up
+                _frame = StoreFrame()
+                If _frame(i, j) = "_" And _frame(i + 1, j) = "_" Then
+                    _frame(i - 1, j) = " "
+                    _frame(i, j) = " "
+                    _frame(i + 1, j) = " "
+                    _frame(i + 2, j) = " "
+                    _frame(i, j + 1) = " "
+                    _frame(i + 1, j + 1) = " "
+
+
+                End If
+                StoreFrame(_frame)
+            Next
+        Next
     End Sub
 
     Function StoreWidth(Optional newWidth As Integer = 0) As Integer
@@ -342,6 +371,40 @@ Module GalacticIntruders
         Return _enemyFiring
     End Function
 
+
+    Function PlayerPosition(Optional column As Integer = 0) As Integer
+        Static _position As Integer = StoreWidth() \ 2
+        Dim _frame(,) As String = StoreFrame()
+
+        _frame(_position, StoreHeight() - 2) = " "
+        _frame(_position + 1, StoreHeight() - 2) = " "
+        _frame(_position + 2, StoreHeight() - 2) = " "
+        _frame(_position + 3, StoreHeight() - 2) = " "
+        _frame(_position, StoreHeight() - 1) = " "
+        _frame(_position + 1, StoreHeight() - 1) = " "
+        _frame(_position + 2, StoreHeight() - 1) = " "
+        _frame(_position + 3, StoreHeight() - 1) = " "
+        StoreFrame(_frame)
+
+        _position = _position + column
+        DrawPlayer(_position)
+
+        Return _position
+    End Function
+
+
+    Sub DrawPlayer(position As Integer)
+        Dim _frame(,) As String
+
+        _frame = StoreFrame()
+        For i = 0 To 1
+            For j = 0 To 3
+                _frame(position + j, StoreHeight() - 2 + i) = Player()(j, i)
+            Next
+        Next
+        StoreFrame(_frame)
+    End Sub
+
     ''' <summary>
     ''' Returns a 2D array contaning the characters for the enemy
     ''' </summary>
@@ -361,6 +424,21 @@ Module GalacticIntruders
         _enemy(4, 1) = " "
 
         Return _enemy
+    End Function
+
+    Function Player() As String(,)
+        Dim _player(3, 1) As String
+
+        _player(0, 0) = " "
+        _player(1, 0) = "/"
+        _player(2, 0) = "\"
+        _player(3, 0) = " "
+        _player(0, 1) = "/"
+        _player(1, 1) = "_"
+        _player(2, 1) = "_"
+        _player(3, 1) = "\"
+
+        Return _player
     End Function
 
     ''' <summary>
