@@ -3,13 +3,17 @@ Option Explicit On
 Imports System.Threading.Thread
 
 'TODO
-'[ ] frame/play area setup - Build animation frame array, populate with graphic characters
-'[ ] basic animation
-' - [ ] enemy movement
-' - [ ] player movement
-' - [ ] projectile
+'[X] frame/play area setup - Build animation frame array, populate with graphic characters
+'[X] basic animation
+' - [X] enemy movement
+' - [X] player movement
+' - [X] enemy projectile
+' - [X] player projectile
+'[X] player controls
 '[ ] collision detection
-'[ ] score keeping
+' - [ ] Player Collision
+' - [X] Enemy Collision
+'[X] score keeping
 '[ ] lives tracking
 '[ ] start screen
 '[ ] end screen
@@ -61,33 +65,10 @@ Module GalacticIntruders
                     PlayerPosition(-1)
                 Case ConsoleKey.RightArrow
                     PlayerPosition(1)
+                Case ConsoleKey.Spacebar
+                    PlayerFire()
             End Select
         Loop Until gameOver()
-    End Sub
-
-    ''' <summary>
-    ''' Moves the player left or right. direction = True will move move to the right
-    ''' </summary>
-    ''' <param name="direction"></param>
-    Sub movePlayer()
-        Dim _frame(,) As String
-
-        For i = 0 To StoreWidth() Step 1 'scan left to right
-            For j = StoreHeight() To StoreHeight() - 2 Step -1 'scan bottom up
-                _frame = StoreFrame()
-                If _frame(i, j) = "_" And _frame(i + 1, j) = "_" Then
-                    _frame(i - 1, j) = " "
-                    _frame(i, j) = " "
-                    _frame(i + 1, j) = " "
-                    _frame(i + 2, j) = " "
-                    _frame(i, j + 1) = " "
-                    _frame(i + 1, j + 1) = " "
-
-
-                End If
-                StoreFrame(_frame)
-            Next
-        Next
     End Sub
 
     Function StoreWidth(Optional newWidth As Integer = 0) As Integer
@@ -104,12 +85,41 @@ Module GalacticIntruders
         Static _Height As Integer
 
         If newHeight <> 0 Then
-            _Height = newHeight - 1 'offset height to start at 0
+            _Height = newHeight - 2 'offset height to start at 0 and have space for header
         End If
 
         Return _Height
     End Function
 
+    ''' <summary>
+    ''' Stores the current life count as an integer. removeLife is an integer subracted directly from the current number of lives
+    ''' If lives reaches 0, calls the GameOver function with the true flag. Default number of lives is 5
+    ''' </summary>
+    ''' <param name="removeLife"></param>
+    ''' <returns></returns>
+    Function Lives(Optional removeLife As Integer = 0) As Integer
+        Static _lives As Integer = 5
+
+        _lives -= removeLife
+        If _lives = 0 Then
+            gameOver(True)
+        End If
+
+        Return _lives
+    End Function
+
+    ''' <summary>
+    ''' Stores the current score as as an integer. addScore is an integer added directly to the current score
+    ''' </summary>
+    ''' <param name="addScore"></param>
+    ''' <returns></returns>
+    Function Score(Optional addScore As Integer = 0) As Integer
+        Static _score As Integer
+
+        _score += addScore
+
+        Return _score
+    End Function
     ''' <summary>
     ''' stores whether or not the game is over
     ''' </summary>
@@ -169,6 +179,7 @@ Module GalacticIntruders
     ''' Writes the stored frame to the console
     ''' </summary>
     Sub WriteFrame()
+        Dim padSize As Integer
         Dim _text As String = ""
         For i = 0 To StoreHeight()
             For j = 0 To StoreWidth()
@@ -183,7 +194,9 @@ Module GalacticIntruders
             End If
         Next
 
+        padSize = StoreWidth() - 7 - CStr(Score()).Length - 7 - CStr(Lives()).Length
         Console.Clear()
+        Console.WriteLine($"Score: {CStr(Score())}".PadRight(padSize) & $"Lives: {CStr(Lives())}")
         Console.Write(_text)
     End Sub
 
@@ -219,18 +232,64 @@ Module GalacticIntruders
         Return _overlap
     End Function
 
+    Sub PlayerFire()
+        Dim _frame(,) As String = StoreFrame()
+
+        _frame(PlayerPosition() + 1, StoreHeight() - 3) = "|"
+        StoreFrame(_frame)
+    End Sub
 
     Sub MoveProjectiles()
         Dim _frame(,) As String
 
         Do
+            'Enemy Projectile
             For i = StoreWidth() To 0 Step -1
                 For j = StoreHeight() To 0 Step -1
                     _frame = StoreFrame()
                     If _frame(i, j) = "." Then
                         _frame(i, j) = " "
-                        If j + 1 < 30 Then
-                            _frame(i, j + 1) = "."
+                        If j + 1 < StoreHeight() Then
+                            Select Case _frame(i, j + 1)
+                                Case "|"
+                                    _frame(i, j + 1) = " "
+                                Case " "
+                                    _frame(i, j + 1) = "."
+                            End Select
+
+                        End If
+                    End If
+                    StoreFrame(_frame)
+                Next
+            Next
+
+            'Player Projectile
+            For i = 0 To StoreWidth()
+                For j = 0 To StoreHeight()
+                    _frame = StoreFrame()
+                    If _frame(i, j) = "|" Then
+                        _frame(i, j) = " "
+                        If j - 1 > 0 Then
+                            Select Case _frame(i, j - 1)
+                                Case "."
+                                    _frame(i, j - 1) = " "
+                                Case " "
+                                    _frame(i, j - 1) = "|"
+                                Case Else
+                                    Score(1)
+                                    For k = -4 To 4
+                                        For l = 0 To 3
+                                            If i + k > 0 And i + k < StoreWidth() And j - l > 0 And j - l < StoreHeight() Then
+                                                If _frame(i + k, j - l) <> " " Then
+                                                    _frame(i + k, j - l) = " "
+                                                End If
+                                            End If
+                                        Next
+
+                                    Next
+
+                            End Select
+
                         End If
                     End If
                     StoreFrame(_frame)
