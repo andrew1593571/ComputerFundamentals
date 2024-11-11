@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
+Imports System.Security.Cryptography.X509Certificates
 Imports System.Threading.Thread
 
 'TODO
@@ -10,11 +11,12 @@ Imports System.Threading.Thread
 ' - [X] enemy projectile
 ' - [X] player projectile
 '[X] player controls
-'[ ] collision detection
-' - [ ] Player Collision
+'[X] collision detection
+' - [X] Player Collision
 ' - [X] Enemy Collision
+'[ ] Enemy Spawning/Difficulty
 '[X] score keeping
-'[ ] lives tracking
+'[X] lives tracking
 '[ ] start screen
 '[ ] end screen
 
@@ -25,6 +27,7 @@ Module GalacticIntruders
         Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
         Dim refreshScreen As New System.Threading.Thread(AddressOf refreshDisplay)
         Dim player As New System.Threading.Thread(AddressOf PlayerControls)
+        Dim spawn As New System.Threading.Thread(AddressOf SpawnEnemy)
 
         'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
@@ -32,10 +35,10 @@ Module GalacticIntruders
 
         StoreFrame(CreateFrame())
 
-        For i = 0 To 8
-            Do 'loop until enemy added successfully
-            Loop While AddEnemy()
-        Next
+        'For i = 0 To 8
+        '    Do 'loop until enemy added successfully
+        '    Loop While AddEnemy()
+        'Next
 
         PlayerPosition()
         WriteFrame()
@@ -44,6 +47,7 @@ Module GalacticIntruders
         Console.ReadLine()
 
         'starts the game
+        spawn.Start()
         moveAliens.Start()
         moveBullets.Start()
         refreshScreen.Start()
@@ -58,6 +62,8 @@ Module GalacticIntruders
     End Sub
 
     Sub PlayerControls()
+        Dim shield As New System.Threading.Thread(AddressOf SpawnShield)
+
         Do
 
             Select Case Console.ReadKey.Key
@@ -67,6 +73,11 @@ Module GalacticIntruders
                     PlayerPosition(1)
                 Case ConsoleKey.Spacebar
                     PlayerFire()
+                Case ConsoleKey.S
+                    If Not shield.IsAlive Then 'if there is not an existing shield, create one
+                        shield = New System.Threading.Thread(AddressOf SpawnShield)
+                        shield.Start()
+                    End If
             End Select
         Loop Until gameOver()
     End Sub
@@ -93,12 +104,12 @@ Module GalacticIntruders
 
     ''' <summary>
     ''' Stores the current life count as an integer. removeLife is an integer subracted directly from the current number of lives
-    ''' If lives reaches 0, calls the GameOver function with the true flag. Default number of lives is 5
+    ''' If lives reaches 0, calls the GameOver function with the true flag. Default number of lives is 20
     ''' </summary>
     ''' <param name="removeLife"></param>
     ''' <returns></returns>
     Function Lives(Optional removeLife As Integer = 0) As Integer
-        Static _lives As Integer = 5
+        Static _lives As Integer = 20
 
         _lives -= removeLife
         If _lives = 0 Then
@@ -232,6 +243,47 @@ Module GalacticIntruders
         Return _overlap
     End Function
 
+    Sub SpawnEnemy()
+        Do
+            Select Case Score()
+                Case 0 To 4 'less than a score of 5, spawn 1
+                    Do 'loop until enemy added successfully
+                    Loop While AddEnemy()
+
+                Case 5 To 10 'between 5 and 10, spawn 2
+                    For i = 0 To 1
+                        Do 'loop until enemy added successfully
+                        Loop While AddEnemy()
+                    Next
+
+                Case 11 To 20 'between 11 and 20 spawn 3
+                    For i = 0 To 2
+                        Do 'loop until enemy added successfully
+                        Loop While AddEnemy()
+                    Next
+
+                Case 21 To 30 'between 21 and 30 spawn 5
+                    For i = 0 To 4
+                        Do 'loop until enemy added successfully
+                        Loop While AddEnemy()
+                    Next
+
+                Case 31 To 50 'between 31 and 50 spawn 7
+                    For i = 0 To 6
+                        Do 'loop until enemy added successfully
+                        Loop While AddEnemy()
+                    Next
+                Case > 50 'greater than 50 spawn 9
+                    For i = 0 To 8
+                        Do 'loop until enemy added successfully
+                        Loop While AddEnemy()
+                    Next
+            End Select
+
+            Sleep(6000)
+        Loop Until gameOver()
+    End Sub
+
     Sub PlayerFire()
         Dim _frame(,) As String = StoreFrame()
 
@@ -255,6 +307,12 @@ Module GalacticIntruders
                                     _frame(i, j + 1) = " "
                                 Case " "
                                     _frame(i, j + 1) = "."
+                                Case "-"
+                                    'Do nothing if it is a shield
+                                Case Else
+                                    If j < StoreHeight() - 2 Then
+                                        Lives(1)
+                                    End If
                             End Select
 
                         End If
@@ -275,6 +333,8 @@ Module GalacticIntruders
                                     _frame(i, j - 1) = " "
                                 Case " "
                                     _frame(i, j - 1) = "|"
+                                Case "-"
+                                    'do nothing if it is a shield
                                 Case Else
                                     Score(1)
                                     For k = -4 To 4
@@ -431,6 +491,22 @@ Module GalacticIntruders
     End Function
 
 
+    Sub SpawnShield()
+        Dim _Frame(,) As String = StoreFrame()
+
+        For i = 0 To StoreWidth()
+            _Frame(i, StoreHeight() - 4) = "-"
+        Next
+
+        Sleep(10000)
+
+        For i = 0 To StoreWidth()
+            _Frame(i, StoreHeight() - 4) = " "
+        Next
+
+        Sleep(10000)
+    End Sub
+
     Function PlayerPosition(Optional column As Integer = 0) As Integer
         Static _position As Integer = StoreWidth() \ 2
         Dim _frame(,) As String = StoreFrame()
@@ -445,7 +521,14 @@ Module GalacticIntruders
         _frame(_position + 3, StoreHeight() - 1) = " "
         StoreFrame(_frame)
 
-        _position = _position + column
+        'keep the player within the drawable area
+        If _position + column < 0 Then
+            _position = 0
+        ElseIf _position + column > StoreWidth() - 3 Then
+            _position = StoreWidth() - 3
+        Else
+            _position = _position + column
+        End If
         DrawPlayer(_position)
 
         Return _position
