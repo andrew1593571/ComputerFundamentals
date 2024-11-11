@@ -14,9 +14,10 @@ Imports System.Threading.Thread
 '[X] collision detection
 ' - [X] Player Collision
 ' - [X] Enemy Collision
-'[ ] Enemy Spawning/Difficulty
+'[X] Enemy Spawning/Difficulty
 '[X] score keeping
 '[X] lives tracking
+'[ ] Game Over Reason
 '[ ] start screen
 '[ ] end screen
 
@@ -333,8 +334,8 @@ Module GalacticIntruders
                                     _frame(i, j - 1) = " "
                                 Case " "
                                     _frame(i, j - 1) = "|"
-                                Case "-"
-                                    'do nothing if it is a shield
+                                Case "-" 'skip above the sheild
+                                    _frame(i, j - 2) = "|"
                                 Case Else
                                     Score(1)
                                     For k = -4 To 4
