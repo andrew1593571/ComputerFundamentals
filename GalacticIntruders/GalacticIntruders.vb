@@ -1,5 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
+Imports System.Net.Http
 Imports System.Security.Cryptography.X509Certificates
 Imports System.Threading.Thread
 
@@ -20,6 +21,7 @@ Imports System.Threading.Thread
 '[ ] Game Over Reason
 '[ ] start screen
 '[ ] end screen
+'[ ] High Score
 
 Module GalacticIntruders
 
@@ -36,14 +38,10 @@ Module GalacticIntruders
 
         StoreFrame(CreateFrame())
 
-        'For i = 0 To 8
-        '    Do 'loop until enemy added successfully
-        '    Loop While AddEnemy()
-        'Next
+        StartScreen()
 
         PlayerPosition()
         WriteFrame()
-
 
         Console.ReadLine()
 
@@ -57,9 +55,9 @@ Module GalacticIntruders
         Do 'check every 50ms if the game is over yet
             Sleep(50)
         Loop Until gameOver()
-        Console.WriteLine("GAME OVER!!!")
 
-        Console.ReadLine()
+        EndScreen()
+
     End Sub
 
     Sub PlayerControls()
@@ -115,6 +113,7 @@ Module GalacticIntruders
         _lives -= removeLife
         If _lives = 0 Then
             gameOver(True)
+            GameOverReason("Out of Lives!")
         End If
 
         Return _lives
@@ -132,6 +131,22 @@ Module GalacticIntruders
 
         Return _score
     End Function
+
+    ''' <summary>
+    ''' Stores a string with the reason for the game ending
+    ''' </summary>
+    ''' <param name="newReason"></param>
+    ''' <returns></returns>
+    Function GameOverReason(Optional newReason As String = Nothing) As String
+        Static _reason As String = "Unknown Reason"
+
+        If newReason IsNot Nothing Then
+            _reason = newReason
+        End If
+
+        Return _reason
+    End Function
+
     ''' <summary>
     ''' stores whether or not the game is over
     ''' </summary>
@@ -210,6 +225,53 @@ Module GalacticIntruders
         Console.Clear()
         Console.WriteLine($"Score: {CStr(Score())}".PadRight(padSize) & $"Lives: {CStr(Lives())}")
         Console.Write(_text)
+    End Sub
+
+    Sub StartScreen()
+        Dim _startLine As Integer = StoreHeight() \ 3
+        Dim _message As String = "Galactic Intruders"
+        Dim _byLine As String = "By: Andrew Keller"
+        Dim _alienLineOne As String = "-/8\-  -/8\-"
+        Dim _alienLineTwo As String = " o o    o o "
+        Dim _highScoreMessage As String = $"High Score: {CStr(Score())}"
+        Dim _startInstruction As String = "Press Space to Start"
+        Dim _quitInstruction As String = "Press Q to Quit"
+
+
+        Console.SetCursorPosition(0, _startLine)
+        Console.WriteLine(_message.PadLeft(((StoreWidth() - _message.Length) \ 2) + _message.Length))
+        Console.WriteLine(_byLine.PadLeft(((StoreWidth() - _byLine.Length) \ 2) + _byLine.Length))
+        Console.WriteLine()
+        Console.WriteLine(_alienLineOne.PadLeft(((StoreWidth() - _alienLineOne.Length) \ 2) + _alienLineOne.Length))
+        Console.WriteLine(_alienLineTwo.PadLeft(((StoreWidth() - _alienLineTwo.Length) \ 2) + _alienLineTwo.Length))
+        Console.WriteLine()
+        Console.WriteLine(_highScoreMessage.PadLeft(((StoreWidth() - _highScoreMessage.Length) \ 2) + _highScoreMessage.Length))
+        Console.WriteLine()
+        Console.WriteLine(_startInstruction.PadLeft(((StoreWidth() - _startInstruction.Length) \ 2) + _startInstruction.Length))
+        Console.WriteLine(_quitInstruction.PadLeft(((StoreWidth() - _quitInstruction.Length) \ 2) + _quitInstruction.Length))
+    End Sub
+
+    ''' <summary>
+    ''' Writes the screen when game finishes
+    ''' </summary>
+    Sub EndScreen()
+        Dim _centerline As Integer = StoreHeight() \ 2
+        Dim _message As String = "Game Over!"
+        Dim _scoreMessage As String = $"Score: {CStr(Score())}"
+        Dim _highScoreMessage As String = $"High Score: {CStr(Score())}"
+        Dim _continueMessage As String = "Press Enter to Return to the Main Menu"
+
+        Console.Clear()
+        Console.SetCursorPosition(0, _centerline - 1)
+        Console.WriteLine(_message.PadLeft(((StoreWidth() - _message.Length) \ 2) + _message.Length))
+        Console.WriteLine(GameOverReason().PadLeft(((StoreWidth() - GameOverReason().Length) \ 2) + GameOverReason().Length))
+        Console.WriteLine()
+        Console.WriteLine(_scoreMessage.PadLeft(((StoreWidth() - _scoreMessage.Length) \ 2) + _scoreMessage.Length))
+        Console.WriteLine(_highScoreMessage.PadLeft(((StoreWidth() - _highScoreMessage.Length) \ 2) + _highScoreMessage.Length))
+        Console.WriteLine()
+        Console.WriteLine(_continueMessage.PadLeft(((StoreWidth() - _continueMessage.Length) \ 2) + _continueMessage.Length))
+
+        Console.ReadLine()
     End Sub
 
     ''' <summary>
@@ -390,6 +452,7 @@ Module GalacticIntruders
                                 If newRow > StoreHeight() - 1 Then
                                     newRow = StoreHeight() - 1
                                     gameOver(True)
+                                    GameOverReason("The Intruders Reached your Base!")
                                 End If
                             Loop While DrawEnemy(False, newColumn, newRow)
                         Else
@@ -404,6 +467,7 @@ Module GalacticIntruders
                                 If newRow > StoreHeight() - 1 Then
                                     newRow = StoreHeight() - 1
                                     gameOver(True)
+                                    GameOverReason("The Intruders Reached your Base!")
                                 End If
                             Loop While DrawEnemy(True, newColumn, newRow)
                         End If
