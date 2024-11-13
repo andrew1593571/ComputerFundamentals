@@ -18,45 +18,68 @@ Imports System.Threading.Thread
 '[X] Enemy Spawning/Difficulty
 '[X] score keeping
 '[X] lives tracking
-'[ ] Game Over Reason
-'[ ] start screen
-'[ ] end screen
+'[X] Game Over Reason
+'[X] start screen
+'[X] end screen
 '[ ] High Score
+'[X] Loop Main
+'[ ] Control Screen
 
 Module GalacticIntruders
 
     Sub Main()
-        Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
-        Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
-        Dim refreshScreen As New System.Threading.Thread(AddressOf refreshDisplay)
-        Dim player As New System.Threading.Thread(AddressOf PlayerControls)
-        Dim spawn As New System.Threading.Thread(AddressOf SpawnEnemy)
+        Dim startGame As Boolean = False
+        Dim _quit As Boolean = False
 
         'Runs the storeHeight and StoreWidth functions at startup
         StoreHeight(Console.BufferHeight)
         StoreWidth(Console.BufferWidth)
 
-        StoreFrame(CreateFrame())
+        Do
+            'These are in the loop so that it creates a new thread task for each round. Otherwise the game can only run once.
+            Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
+            Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
+            Dim refreshScreen As New System.Threading.Thread(AddressOf refreshDisplay)
+            Dim player As New System.Threading.Thread(AddressOf PlayerControls)
+            Dim spawn As New System.Threading.Thread(AddressOf SpawnEnemy)
 
-        StartScreen()
+            StoreFrame(CreateFrame())
 
-        PlayerPosition()
-        WriteFrame()
+            StartScreen()
+            Do
+                Select Case Console.ReadKey.Key
+                    Case ConsoleKey.Spacebar
+                        startGame = True
+                    Case ConsoleKey.Q
+                        _quit = True
+                        Exit Sub
+                    Case ConsoleKey.C
+                        ControlScreen()
+                        StartScreen()
+                End Select
+            Loop Until startGame
+            startGame = False
 
-        Console.ReadLine()
+            PlayerPosition()
+            Lives(-20) 'sets the life count to 20
+            Score(-Score()) 'sets the score back to 0
+            GameOver(False, True) 'Sets the game over flag back to false
+            WriteFrame()
 
-        'starts the game
-        spawn.Start()
-        moveAliens.Start()
-        moveBullets.Start()
-        refreshScreen.Start()
-        player.Start()
+            'starts the game
+            spawn.Start()
+            moveAliens.Start()
+            moveBullets.Start()
+            refreshScreen.Start()
+            player.Start()
 
-        Do 'check every 50ms if the game is over yet
-            Sleep(50)
-        Loop Until gameOver()
+            Do 'check every 50ms if the game is over yet
+                Sleep(50)
+            Loop Until GameOver()
 
-        EndScreen()
+            EndScreen()
+        Loop Until _quit
+
 
     End Sub
 
@@ -78,7 +101,7 @@ Module GalacticIntruders
                         shield.Start()
                     End If
             End Select
-        Loop Until gameOver()
+        Loop Until GameOver()
     End Sub
 
     Function StoreWidth(Optional newWidth As Integer = 0) As Integer
@@ -108,11 +131,11 @@ Module GalacticIntruders
     ''' <param name="removeLife"></param>
     ''' <returns></returns>
     Function Lives(Optional removeLife As Integer = 0) As Integer
-        Static _lives As Integer = 20
+        Static _lives As Integer = 0
 
         _lives -= removeLife
         If _lives = 0 Then
-            gameOver(True)
+            GameOver(True, True)
             GameOverReason("Out of Lives!")
         End If
 
@@ -152,11 +175,11 @@ Module GalacticIntruders
     ''' </summary>
     ''' <param name="status"></param>
     ''' <returns></returns>
-    Function gameOver(Optional status As Boolean = False) As Boolean
+    Function GameOver(Optional status As Boolean = False, Optional setStatus As Boolean = False) As Boolean
         Static _gameOver As Boolean
 
-        If status Then
-            _gameOver = True
+        If setStatus Then
+            _gameOver = status
         End If
         Return _gameOver
     End Function
@@ -199,7 +222,7 @@ Module GalacticIntruders
         Do
             WriteFrame()
             Sleep(1)
-        Loop Until gameOver()
+        Loop Until GameOver()
     End Sub
 
     ''' <summary>
@@ -227,6 +250,35 @@ Module GalacticIntruders
         Console.Write(_text)
     End Sub
 
+    ''' <summary>
+    ''' Displays a list of controls for the user
+    ''' </summary>
+    Sub ControlScreen()
+        Dim _startLine As Integer = StoreHeight() \ 3
+        Dim _message As String = "Controls:"
+        Dim _fireInstruction As String = "Spacebar".PadLeft(12) & " - " & "Shoot Projectile".PadRight(18)
+        Dim _moveLeft As String = "Left Arrow".PadLeft(12) & " - " & "Move Left".PadRight(18)
+        Dim _moveRight As String = "Right Arrow".PadLeft(12) & " - " & "Move Right".PadRight(18)
+        Dim _Shield As String = "S".PadLeft(12) & " - " & "Spawn Shield".PadRight(18)
+        Dim _continueMessage As String = "Press Enter to Return to the Main Menu"
+
+        Console.Clear()
+        Console.SetCursorPosition(0, _startLine)
+        Console.WriteLine(_message.PadLeft(((StoreWidth() - _message.Length) \ 2) + _message.Length))
+        Console.WriteLine()
+        Console.WriteLine(_fireInstruction.PadLeft(((StoreWidth() - _fireInstruction.Length) \ 2) + _fireInstruction.Length))
+        Console.WriteLine(_moveLeft.PadLeft(((StoreWidth() - _moveLeft.Length) \ 2) + _moveLeft.Length))
+        Console.WriteLine(_moveRight.PadLeft(((StoreWidth() - _moveRight.Length) \ 2) + _moveRight.Length))
+        Console.WriteLine(_Shield.PadLeft(((StoreWidth() - _Shield.Length) \ 2) + _Shield.Length))
+        Console.WriteLine()
+        Console.WriteLine(_continueMessage.PadLeft(((StoreWidth() - _continueMessage.Length) \ 2) + _continueMessage.Length))
+
+        Console.ReadLine()
+    End Sub
+
+    ''' <summary>
+    ''' Displays the start screen for the game
+    ''' </summary>
     Sub StartScreen()
         Dim _startLine As Integer = StoreHeight() \ 3
         Dim _message As String = "Galactic Intruders"
@@ -237,7 +289,7 @@ Module GalacticIntruders
         Dim _startInstruction As String = "Press Space to Start"
         Dim _quitInstruction As String = "Press Q to Quit"
 
-
+        Console.Clear()
         Console.SetCursorPosition(0, _startLine)
         Console.WriteLine(_message.PadLeft(((StoreWidth() - _message.Length) \ 2) + _message.Length))
         Console.WriteLine(_byLine.PadLeft(((StoreWidth() - _byLine.Length) \ 2) + _byLine.Length))
@@ -344,7 +396,7 @@ Module GalacticIntruders
             End Select
 
             Sleep(6000)
-        Loop Until gameOver()
+        Loop Until GameOver()
     End Sub
 
     Sub PlayerFire()
@@ -419,7 +471,7 @@ Module GalacticIntruders
                 Next
             Next
             Sleep(300)
-        Loop Until gameOver()
+        Loop Until GameOver()
 
     End Sub
 
@@ -451,7 +503,7 @@ Module GalacticIntruders
                                 End If
                                 If newRow > StoreHeight() - 1 Then
                                     newRow = StoreHeight() - 1
-                                    gameOver(True)
+                                    GameOver(True, True)
                                     GameOverReason("The Intruders Reached your Base!")
                                 End If
                             Loop While DrawEnemy(False, newColumn, newRow)
@@ -466,7 +518,7 @@ Module GalacticIntruders
                                 End If
                                 If newRow > StoreHeight() - 1 Then
                                     newRow = StoreHeight() - 1
-                                    gameOver(True)
+                                    GameOver(True, True)
                                     GameOverReason("The Intruders Reached your Base!")
                                 End If
                             Loop While DrawEnemy(True, newColumn, newRow)
@@ -477,7 +529,7 @@ Module GalacticIntruders
             Next
 
             Sleep(1000)
-        Loop Until gameOver()
+        Loop Until GameOver()
 
     End Sub
 
