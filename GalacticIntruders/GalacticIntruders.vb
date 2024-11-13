@@ -26,7 +26,7 @@ Imports System.Threading.Thread
 ' - [ ] Retrieve existing high score from file
 '[X] Loop Main
 '[X] Control Screen
-'[ ] resize window or lock to original size
+'[ ] resize window (Currently only works if the user enters something in after making the change
 
 Module GalacticIntruders
 
