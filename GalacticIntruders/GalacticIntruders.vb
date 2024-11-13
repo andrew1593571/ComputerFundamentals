@@ -22,6 +22,8 @@ Imports System.Threading.Thread
 '[X] start screen
 '[X] end screen
 '[ ] High Score
+' - [ ] Save high score to file
+' - [ ] Retrieve existing high score from file
 '[X] Loop Main
 '[X] Control Screen
 '[ ] resize window or lock to original size
@@ -108,6 +110,10 @@ Module GalacticIntruders
                     End If
             End Select
         Loop Until GameOver()
+    End Sub
+
+    Sub GetHighScore()
+        'open file and retrieve current high score
     End Sub
 
     ''' <summary>
