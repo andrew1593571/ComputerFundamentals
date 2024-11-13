@@ -23,7 +23,8 @@ Imports System.Threading.Thread
 '[X] end screen
 '[ ] High Score
 '[X] Loop Main
-'[ ] Control Screen
+'[X] Control Screen
+'[ ] resize window or lock to original size
 
 Module GalacticIntruders
 
@@ -31,11 +32,9 @@ Module GalacticIntruders
         Dim startGame As Boolean = False
         Dim _quit As Boolean = False
 
-        'Runs the storeHeight and StoreWidth functions at startup
-        StoreHeight(Console.BufferHeight)
-        StoreWidth(Console.BufferWidth)
 
         Do
+
             'These are in the loop so that it creates a new thread task for each round. Otherwise the game can only run once.
             Dim moveAliens As New System.Threading.Thread(AddressOf MoveEnemy)
             Dim moveBullets As New System.Threading.Thread(AddressOf MoveProjectiles)
@@ -43,10 +42,13 @@ Module GalacticIntruders
             Dim player As New System.Threading.Thread(AddressOf PlayerControls)
             Dim spawn As New System.Threading.Thread(AddressOf SpawnEnemy)
 
-            StoreFrame(CreateFrame())
 
-            StartScreen()
             Do
+                'Runs the storeHeight and StoreWidth functions while in the main menu
+                StoreHeight(Console.WindowHeight)
+                StoreWidth(Console.WindowWidth)
+                StartScreen()
+
                 Select Case Console.ReadKey.Key
                     Case ConsoleKey.Spacebar
                         startGame = True
@@ -60,7 +62,8 @@ Module GalacticIntruders
             Loop Until startGame
             startGame = False
 
-            PlayerPosition()
+            StoreFrame(CreateFrame()) 'Stores an empty frame
+            PlayerPosition() 'spawns the player in
             Lives(-20) 'sets the life count to 20
             Score(-Score()) 'sets the score back to 0
             GameOver(False, True) 'Sets the game over flag back to false
@@ -83,6 +86,9 @@ Module GalacticIntruders
 
     End Sub
 
+    ''' <summary>
+    ''' watches for key presses and executes functions based on them
+    ''' </summary>
     Sub PlayerControls()
         Dim shield As New System.Threading.Thread(AddressOf SpawnShield)
 
@@ -104,6 +110,11 @@ Module GalacticIntruders
         Loop Until GameOver()
     End Sub
 
+    ''' <summary>
+    ''' Stores the width of the console window. Can be set using newWidth
+    ''' </summary>
+    ''' <param name="newWidth"></param>
+    ''' <returns></returns>
     Function StoreWidth(Optional newWidth As Integer = 0) As Integer
         Static _width As Integer
 
@@ -114,6 +125,11 @@ Module GalacticIntruders
         Return _width
     End Function
 
+    ''' <summary>
+    ''' Stores the height of the console window. Can be set using newHeight
+    ''' </summary>
+    ''' <param name="newHeight"></param>
+    ''' <returns></returns>
     Function StoreHeight(Optional newHeight As Integer = 0) As Integer
         Static _Height As Integer
 
@@ -221,7 +237,7 @@ Module GalacticIntruders
     Sub refreshDisplay()
         Do
             WriteFrame()
-            Sleep(1)
+            Sleep(2)
         Loop Until GameOver()
     End Sub
 
@@ -288,6 +304,7 @@ Module GalacticIntruders
         Dim _highScoreMessage As String = $"High Score: {CStr(Score())}"
         Dim _startInstruction As String = "Press Space to Start"
         Dim _quitInstruction As String = "Press Q to Quit"
+        Dim _controlInstruction As String = "Press C to View Controls"
 
         Console.Clear()
         Console.SetCursorPosition(0, _startLine)
@@ -301,6 +318,7 @@ Module GalacticIntruders
         Console.WriteLine()
         Console.WriteLine(_startInstruction.PadLeft(((StoreWidth() - _startInstruction.Length) \ 2) + _startInstruction.Length))
         Console.WriteLine(_quitInstruction.PadLeft(((StoreWidth() - _quitInstruction.Length) \ 2) + _quitInstruction.Length))
+        Console.WriteLine(_controlInstruction.PadLeft(((StoreWidth() - _controlInstruction.Length) \ 2) + _controlInstruction.Length))
     End Sub
 
     ''' <summary>
@@ -358,6 +376,9 @@ Module GalacticIntruders
         Return _overlap
     End Function
 
+    ''' <summary>
+    ''' spawns a increasing number of enemies based on the score
+    ''' </summary>
     Sub SpawnEnemy()
         Do
             Select Case Score()
@@ -399,6 +420,9 @@ Module GalacticIntruders
         Loop Until GameOver()
     End Sub
 
+    ''' <summary>
+    ''' spawns a player projectile above the player
+    ''' </summary>
     Sub PlayerFire()
         Dim _frame(,) As String = StoreFrame()
 
@@ -406,6 +430,9 @@ Module GalacticIntruders
         StoreFrame(_frame)
     End Sub
 
+    ''' <summary>
+    ''' Moves the projectiles on the screen, detects collisions with enemies or player
+    ''' </summary>
     Sub MoveProjectiles()
         Dim _frame(,) As String
 
@@ -607,7 +634,9 @@ Module GalacticIntruders
         Return _enemyFiring
     End Function
 
-
+    ''' <summary>
+    ''' spawns a shield above the player area for 10 seconds. Cannot be used for another 10 seconds
+    ''' </summary>
     Sub SpawnShield()
         Dim _Frame(,) As String = StoreFrame()
 
@@ -651,7 +680,10 @@ Module GalacticIntruders
         Return _position
     End Function
 
-
+    ''' <summary>
+    ''' Draws the player on the screen
+    ''' </summary>
+    ''' <param name="position"></param>
     Sub DrawPlayer(position As Integer)
         Dim _frame(,) As String
 
@@ -685,6 +717,10 @@ Module GalacticIntruders
         Return _enemy
     End Function
 
+    ''' <summary>
+    ''' Returns a 2D array containing the characters for the player
+    ''' </summary>
+    ''' <returns></returns>
     Function Player() As String(,)
         Dim _player(3, 1) As String
 
