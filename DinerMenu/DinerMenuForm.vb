@@ -3,8 +3,7 @@
         Dim title As String = "~ Soup of the Day ~" & vbNewLine
         Dim name As String = "Hacker's Delight" & vbNewLine
         Dim description As String
-        description = "A savory blend of chicken, potatoes, and carrots seasoned with herbs and spices, all topped off with a rich cream sause. The perfect accompaniment to any digital conquest!"
-
+        description = "A taste of digital anarchy in every spoonful. Our soup is a playful subversion of traditional comfort food, with a dash of code-red madness thrown in for good measure. Served in a bowl that's equal parts high-tech and retro-futuristic, Hacker's Delight is the perfect dish for those who refuse to be silenced by the ordinary."
 
         DisplaySpecialLabel.Text = title & vbNewLine & name & vbNewLine & description
     End Sub
