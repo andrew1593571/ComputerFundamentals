@@ -9,7 +9,35 @@ Option Strict On
 Module RollOfTheDice
 
     Sub Main()
+        Dim columnWidth As Integer = 6
+        Dim diceRolls(10) As Integer 'stores the number of rolls for each number 2 through 12
+        Dim column As String
+        Dim row As String
 
+        'roll the dice i times, increment the rolled value by 1
+        For i = 0 To 1000
+            diceRolls(GetRandomNumberInRange(10)) += 1
+        Next
+
+        'Add in the column header row
+        DrawLine(columnWidth * 11)
+        row = ""
+        For i = 0 To 10
+            column = $"| {CStr(i + 2)}".PadRight(columnWidth)
+            row &= column
+        Next
+        Console.WriteLine(row & "|")
+
+
+        Console.ReadLine()
+    End Sub
+
+    ''' <summary>
+    ''' Draws a line of dashes
+    ''' </summary>
+    ''' <param name="width"></param>
+    Sub DrawLine(width As Integer)
+        Console.WriteLine(StrDup(width, "-"))
     End Sub
 
     ''' <summary>
