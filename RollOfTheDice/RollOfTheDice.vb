@@ -13,17 +13,24 @@ Module RollOfTheDice
         Dim diceRolls(10) As Integer 'stores the number of rolls for each number 2 through 12
         Dim column As String
         Dim row As String
+        Dim title As String = "Roll of the Dice"
+
+        'finds the pad width to fit center the title over the table
+        Dim titlePad As Integer = (((columnWidth * 11) - title.Length) \ 2) + title.Length
 
         'roll the dice i times, increment the rolled value by 1
         For i = 0 To 1000
             diceRolls(GetRandomNumberInRange(10)) += 1
         Next
 
+        'Add in the title row
+        Console.WriteLine(title.PadLeft(titlePad))
+
         'Add in the column header row
         DrawLine(columnWidth * 11)
         row = ""
         For i = 0 To 10
-            column = $"| {CStr(i + 2)}".PadRight(columnWidth)
+            column = $"|  {CStr(i + 2)}".PadRight(columnWidth)
             row &= column
         Next
         Console.WriteLine(row & "|")
