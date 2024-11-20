@@ -28,6 +28,18 @@ Module RollOfTheDice
         Next
         Console.WriteLine(row & "|")
 
+        'Add in the Add in the dice roll results
+        DrawLine(columnWidth * 11)
+        row = ""
+        For i = 0 To 10
+            column = $"| {CStr(diceRolls(i))}".PadRight(columnWidth)
+            row &= column
+        Next
+        Console.WriteLine(row & "|")
+
+        'Add in bottom line of table
+        DrawLine(columnWidth * 11)
+
 
         Console.ReadLine()
     End Sub
