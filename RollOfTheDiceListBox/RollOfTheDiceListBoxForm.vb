@@ -12,7 +12,7 @@ Public Class RollOfTheDiceListBoxForm
     End Sub
 
     Private Sub RollButton_Click(sender As Object, e As EventArgs) Handles RollButton.Click
-        Dim _columnWidth As Integer = 6
+        Dim _columnWidth As Integer = 7
         Dim _diceRolls() As Integer = DiceRolls() 'stores the number of rolls for each number 2 through 12
         Dim _column As String
         Dim _row As String
@@ -58,6 +58,21 @@ Public Class RollOfTheDiceListBoxForm
         DiceRolls(_diceRolls)
     End Sub
 
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        'clears the listbox and reset dice roll to 0
+        ResultsListBox.Items.Clear()
+        DiceRolls(Nothing, True)
+    End Sub
+
+
+    '---Functions and Subs---
+
+    ''' <summary>
+    ''' Stores the current dice rolls and returns them
+    ''' </summary>
+    ''' <param name="newRolls"></param>
+    ''' <param name="Clear"></param>
+    ''' <returns></returns>
     Function DiceRolls(Optional newRolls As Integer() = Nothing, Optional Clear As Boolean = False) As Integer()
         Static _diceRolls(10) As Integer
 
@@ -101,4 +116,6 @@ Public Class RollOfTheDiceListBoxForm
 
         Return randomNumber
     End Function
+
+
 End Class
