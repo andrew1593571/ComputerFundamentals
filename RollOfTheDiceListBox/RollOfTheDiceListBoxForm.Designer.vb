@@ -22,10 +22,12 @@ Partial Class RollOfTheDiceListBoxForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.RollButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.ResultsListBox = New System.Windows.Forms.ListBox()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'ExitButton
@@ -34,8 +36,9 @@ Partial Class RollOfTheDiceListBoxForm
         Me.ExitButton.Location = New System.Drawing.Point(712, 389)
         Me.ExitButton.Name = "ExitButton"
         Me.ExitButton.Size = New System.Drawing.Size(100, 60)
-        Me.ExitButton.TabIndex = 0
+        Me.ExitButton.TabIndex = 3
         Me.ExitButton.Text = "E&xit"
+        Me.ToolTip.SetToolTip(Me.ExitButton, "Exit the Program")
         Me.ExitButton.UseVisualStyleBackColor = True
         '
         'RollButton
@@ -46,6 +49,7 @@ Partial Class RollOfTheDiceListBoxForm
         Me.RollButton.Size = New System.Drawing.Size(100, 60)
         Me.RollButton.TabIndex = 1
         Me.RollButton.Text = "&Roll"
+        Me.ToolTip.SetToolTip(Me.RollButton, "Rolls the dice an additional 1000 Times")
         Me.RollButton.UseVisualStyleBackColor = True
         '
         'ClearButton
@@ -56,6 +60,7 @@ Partial Class RollOfTheDiceListBoxForm
         Me.ClearButton.Size = New System.Drawing.Size(100, 60)
         Me.ClearButton.TabIndex = 2
         Me.ClearButton.Text = "&Clear"
+        Me.ToolTip.SetToolTip(Me.ClearButton, "Clear the Results")
         Me.ClearButton.UseVisualStyleBackColor = True
         '
         'ResultsListBox
@@ -71,6 +76,7 @@ Partial Class RollOfTheDiceListBoxForm
         Me.ResultsListBox.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.ResultsListBox.Size = New System.Drawing.Size(800, 356)
         Me.ResultsListBox.TabIndex = 3
+        Me.ResultsListBox.TabStop = False
         '
         'RollOfTheDiceListBoxForm
         '
@@ -91,4 +97,5 @@ Partial Class RollOfTheDiceListBoxForm
     Friend WithEvents RollButton As Button
     Friend WithEvents ClearButton As Button
     Friend WithEvents ResultsListBox As ListBox
+    Friend WithEvents ToolTip As ToolTip
 End Class
