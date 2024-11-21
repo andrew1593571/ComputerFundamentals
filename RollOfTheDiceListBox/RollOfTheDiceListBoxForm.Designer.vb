@@ -66,6 +66,7 @@ Partial Class RollOfTheDiceListBoxForm
         Me.ResultsListBox.FormattingEnabled = True
         Me.ResultsListBox.Location = New System.Drawing.Point(12, 12)
         Me.ResultsListBox.Name = "ResultsListBox"
+        Me.ResultsListBox.SelectionMode = System.Windows.Forms.SelectionMode.None
         Me.ResultsListBox.Size = New System.Drawing.Size(776, 355)
         Me.ResultsListBox.TabIndex = 3
         '
