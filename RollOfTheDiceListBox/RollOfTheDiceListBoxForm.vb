@@ -13,7 +13,7 @@ Public Class RollOfTheDiceListBoxForm
 
     Private Sub RollButton_Click(sender As Object, e As EventArgs) Handles RollButton.Click
         Dim _columnWidth As Integer = 6
-        Dim _diceRolls(10) As Integer 'stores the number of rolls for each number 2 through 12
+        Dim _diceRolls() As Integer = DiceRolls() 'stores the number of rolls for each number 2 through 12
         Dim _column As String
         Dim _row As String
         Dim _title As String = "Roll of the Dice"
@@ -54,7 +54,26 @@ Public Class RollOfTheDiceListBoxForm
         'Add in bottom line of table
         ResultsListBox.Items.Add(DrawLine(_columnWidth * 11))
 
+        'Save the _diceRolls back to DiceRolls function
+        DiceRolls(_diceRolls)
     End Sub
+
+    Function DiceRolls(Optional newRolls As Integer() = Nothing, Optional Clear As Boolean = False) As Integer()
+        Static _diceRolls(10) As Integer
+
+        If newRolls IsNot Nothing Then
+            _diceRolls = newRolls
+        End If
+
+        If Clear Then
+            For i = 0 To 10
+                _diceRolls(i) = 0
+            Next
+            ResultsListBox.Items.Clear()
+        End If
+
+        Return _diceRolls
+    End Function
 
     ''' <summary>
     ''' Draws a line of dashes
