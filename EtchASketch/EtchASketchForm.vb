@@ -157,8 +157,7 @@ Public Class EtchASketchForm
         If image Is Nothing Then
             Return bmp
         Else
-            bmp = CreateBitmap()
-            MsgBox("Created new Bitmap")
+            bmp = New Bitmap(image)
             Return bmp
 
         End If
