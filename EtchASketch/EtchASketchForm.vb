@@ -249,7 +249,7 @@ Public Class EtchASketchForm
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub ColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ColorToolStripMenuItem.Click
+    Private Sub ChangePenColor(sender As Object, e As EventArgs) Handles PenColorToolStripMenuItem.Click, PenColorTopToolStripMenuItem.Click
         ColorDialog.ShowDialog()
         PenColor(ColorDialog.Color)
     End Sub
@@ -279,9 +279,16 @@ Public Class EtchASketchForm
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub BackgroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click
+    Private Sub ChangeBackgroundColor(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click, BackgroundColorTopToolStripMenuItem.Click
         ColorDialog.ShowDialog()
-        DrawingPictureBox.BackColor = ColorDialog.Color
+        Dim g As Graphics = Graphics.FromImage(StoreBitmap())
+        Dim brush As New SolidBrush(ColorDialog.Color)
+        Dim rect As New Rectangle(0, 0, DrawingPictureBox.Width, DrawingPictureBox.Height)
+
+        g.FillRectangle(brush, rect)
+
+        g.Dispose()
+        DrawingPictureBox.Image = StoreBitmap()
     End Sub
 
     ''' <summary>
@@ -357,7 +364,4 @@ Public Class EtchASketchForm
         AboutForm.Show()
     End Sub
 
-    Private Sub ContextMenuStrip_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip.Opening
-
-    End Sub
 End Class

@@ -10,7 +10,4 @@ Public Class AboutForm
         EtchASketchForm.Show()
     End Sub
 
-    Private Sub InformationLabel_Click(sender As Object, e As EventArgs) Handles InformationLabel.Click
-
-    End Sub
 End Class
