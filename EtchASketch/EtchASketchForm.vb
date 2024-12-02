@@ -177,7 +177,7 @@ Public Class EtchASketchForm
     Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseDown, DrawingPictureBox.MouseMove
         Static oldX%, oldY%
 
-        Me.Text = $"({e.X.ToString},{e.Y.ToString}) Button: {e.Button.ToString} Color: {PenColor().Name}"
+        'Me.Text = $"({e.X.ToString},{e.Y.ToString}) Button: {e.Button.ToString} Color: {PenColor().Name}"
 
         If e.Button = MouseButtons.Left Then
             MouseDraw(oldX, oldY, e.X, e.Y)

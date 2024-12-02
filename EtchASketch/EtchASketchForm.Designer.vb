@@ -28,6 +28,8 @@ Partial Class EtchASketchForm
         Me.ColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ControlsGroupBox = New System.Windows.Forms.GroupBox()
+        Me.PenSizeLabel = New System.Windows.Forms.Label()
+        Me.PenSizeTrackBar = New System.Windows.Forms.TrackBar()
         Me.WaveButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.ExitButton = New System.Windows.Forms.Button()
@@ -39,13 +41,11 @@ Partial Class EtchASketchForm
         Me.OpenTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PenSizeLabel = New System.Windows.Forms.Label()
-        Me.PenSizeTrackBar = New System.Windows.Forms.TrackBar()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip.SuspendLayout()
         Me.ControlsGroupBox.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
         CType(Me.PenSizeTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'DrawingPictureBox
@@ -93,6 +93,26 @@ Partial Class EtchASketchForm
         Me.ControlsGroupBox.Size = New System.Drawing.Size(788, 100)
         Me.ControlsGroupBox.TabIndex = 1
         Me.ControlsGroupBox.TabStop = False
+        '
+        'PenSizeLabel
+        '
+        Me.PenSizeLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PenSizeLabel.Location = New System.Drawing.Point(249, 19)
+        Me.PenSizeLabel.Name = "PenSizeLabel"
+        Me.PenSizeLabel.Size = New System.Drawing.Size(131, 27)
+        Me.PenSizeLabel.TabIndex = 4
+        Me.PenSizeLabel.Text = "Pen Size"
+        Me.PenSizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'PenSizeTrackBar
+        '
+        Me.PenSizeTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PenSizeTrackBar.Location = New System.Drawing.Point(252, 49)
+        Me.PenSizeTrackBar.Minimum = 1
+        Me.PenSizeTrackBar.Name = "PenSizeTrackBar"
+        Me.PenSizeTrackBar.Size = New System.Drawing.Size(128, 45)
+        Me.PenSizeTrackBar.TabIndex = 3
+        Me.PenSizeTrackBar.Value = 1
         '
         'WaveButton
         '
@@ -147,13 +167,13 @@ Partial Class EtchASketchForm
         'OpenTopMenuItem
         '
         Me.OpenTopMenuItem.Name = "OpenTopMenuItem"
-        Me.OpenTopMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenTopMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.OpenTopMenuItem.Text = "&Open"
         '
         'SaveTopMenuItem
         '
         Me.SaveTopMenuItem.Name = "SaveTopMenuItem"
-        Me.SaveTopMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SaveTopMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.SaveTopMenuItem.Text = "&Save"
         '
         'HelpTopMenuItem
@@ -162,27 +182,7 @@ Partial Class EtchASketchForm
         Me.HelpTopMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpTopMenuItem.Text = "&Help"
         '
-        'PenSizeLabel
-        '
-        Me.PenSizeLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PenSizeLabel.Location = New System.Drawing.Point(249, 19)
-        Me.PenSizeLabel.Name = "PenSizeLabel"
-        Me.PenSizeLabel.Size = New System.Drawing.Size(131, 27)
-        Me.PenSizeLabel.TabIndex = 4
-        Me.PenSizeLabel.Text = "Pen Size"
-        Me.PenSizeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'PenSizeTrackBar
-        '
-        Me.PenSizeTrackBar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PenSizeTrackBar.Location = New System.Drawing.Point(252, 49)
-        Me.PenSizeTrackBar.Minimum = 1
-        Me.PenSizeTrackBar.Name = "PenSizeTrackBar"
-        Me.PenSizeTrackBar.Size = New System.Drawing.Size(128, 45)
-        Me.PenSizeTrackBar.TabIndex = 3
-        Me.PenSizeTrackBar.Value = 1
-        '
-        'GraphicsExampleForm
+        'EtchASketchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -191,15 +191,15 @@ Partial Class EtchASketchForm
         Me.Controls.Add(Me.ControlsGroupBox)
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Name = "GraphicsExampleForm"
-        Me.Text = "Form1"
+        Me.Name = "EtchASketchForm"
+        Me.Text = "Etch-A-Sketch"
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip.ResumeLayout(False)
         Me.ControlsGroupBox.ResumeLayout(False)
         Me.ControlsGroupBox.PerformLayout()
+        CType(Me.PenSizeTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.PenSizeTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
