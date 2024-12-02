@@ -1,5 +1,11 @@
 ﻿Imports System.Linq.Expressions
 
+'Andrew Keller
+'RCET2265
+'Fall 2024
+'Etch-A-Sketch
+'https://github.com/andrew1593571/EtchASketch.git
+
 Public Class EtchASketchForm
 
     ''' <summary>
