@@ -22,6 +22,7 @@ Partial Class AddressLabelForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.DisplayButton = New System.Windows.Forms.Button()
@@ -40,6 +41,7 @@ Partial Class AddressLabelForm
         Me.ZipLabel = New System.Windows.Forms.Label()
         Me.OutputGroupBox = New System.Windows.Forms.GroupBox()
         Me.DisplayLabel = New System.Windows.Forms.Label()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.InputGroupBox.SuspendLayout()
         Me.OutputGroupBox.SuspendLayout()
         Me.SuspendLayout()
@@ -52,6 +54,7 @@ Partial Class AddressLabelForm
         Me.ExitButton.Size = New System.Drawing.Size(106, 70)
         Me.ExitButton.TabIndex = 0
         Me.ExitButton.Text = "&Exit"
+        Me.ToolTip.SetToolTip(Me.ExitButton, "Exit the Program")
         Me.ExitButton.UseVisualStyleBackColor = True
         '
         'ClearButton
@@ -62,6 +65,7 @@ Partial Class AddressLabelForm
         Me.ClearButton.Size = New System.Drawing.Size(106, 70)
         Me.ClearButton.TabIndex = 1
         Me.ClearButton.Text = "&Clear"
+        Me.ToolTip.SetToolTip(Me.ClearButton, "Clears the Label")
         Me.ClearButton.UseVisualStyleBackColor = True
         '
         'DisplayButton
@@ -72,6 +76,7 @@ Partial Class AddressLabelForm
         Me.DisplayButton.Size = New System.Drawing.Size(106, 70)
         Me.DisplayButton.TabIndex = 2
         Me.DisplayButton.Text = "&Display Label"
+        Me.ToolTip.SetToolTip(Me.DisplayButton, "Displays the Formatted Label")
         Me.DisplayButton.UseVisualStyleBackColor = True
         '
         'InputGroupBox
@@ -114,6 +119,7 @@ Partial Class AddressLabelForm
         Me.FirstNameTextBox.Name = "FirstNameTextBox"
         Me.FirstNameTextBox.Size = New System.Drawing.Size(263, 20)
         Me.FirstNameTextBox.TabIndex = 1
+        Me.ToolTip.SetToolTip(Me.FirstNameTextBox, "Addressee's First Name")
         '
         'LastNameTextBox
         '
@@ -123,6 +129,7 @@ Partial Class AddressLabelForm
         Me.LastNameTextBox.Name = "LastNameTextBox"
         Me.LastNameTextBox.Size = New System.Drawing.Size(263, 20)
         Me.LastNameTextBox.TabIndex = 3
+        Me.ToolTip.SetToolTip(Me.LastNameTextBox, "Addressee's Last Name")
         '
         'LastNameLabel
         '
@@ -141,6 +148,7 @@ Partial Class AddressLabelForm
         Me.StreetAddressTextBox.Name = "StreetAddressTextBox"
         Me.StreetAddressTextBox.Size = New System.Drawing.Size(263, 20)
         Me.StreetAddressTextBox.TabIndex = 5
+        Me.ToolTip.SetToolTip(Me.StreetAddressTextBox, "Addressee's Street Address")
         '
         'StreetAddressLabel
         '
@@ -159,6 +167,7 @@ Partial Class AddressLabelForm
         Me.CityTextBox.Name = "CityTextBox"
         Me.CityTextBox.Size = New System.Drawing.Size(263, 20)
         Me.CityTextBox.TabIndex = 7
+        Me.ToolTip.SetToolTip(Me.CityTextBox, "Addressee's City")
         '
         'CityLabel
         '
@@ -175,6 +184,7 @@ Partial Class AddressLabelForm
         Me.StateTextBox.Name = "StateTextBox"
         Me.StateTextBox.Size = New System.Drawing.Size(74, 20)
         Me.StateTextBox.TabIndex = 9
+        Me.ToolTip.SetToolTip(Me.StateTextBox, "Addressee's State")
         '
         'StateLabel
         '
@@ -191,6 +201,7 @@ Partial Class AddressLabelForm
         Me.ZipTextBox.Name = "ZipTextBox"
         Me.ZipTextBox.Size = New System.Drawing.Size(74, 20)
         Me.ZipTextBox.TabIndex = 11
+        Me.ToolTip.SetToolTip(Me.ZipTextBox, "Addressee's Zip Code")
         '
         'ZipLabel
         '
@@ -226,8 +237,10 @@ Partial Class AddressLabelForm
         '
         'AddressLabelForm
         '
+        Me.AcceptButton = Me.DisplayButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.ClearButton
         Me.ClientSize = New System.Drawing.Size(635, 372)
         Me.Controls.Add(Me.OutputGroupBox)
         Me.Controls.Add(Me.InputGroupBox)
@@ -263,4 +276,5 @@ Partial Class AddressLabelForm
     Friend WithEvents FirstNameTextBox As TextBox
     Friend WithEvents OutputGroupBox As GroupBox
     Friend WithEvents DisplayLabel As Label
+    Friend WithEvents ToolTip As ToolTip
 End Class
