@@ -48,7 +48,7 @@ Public Class EtchASketchForm
     End Sub
 
     ''' <summary>
-    ''' Draw text at 50,50
+    ''' Draw text at 50,50.
     ''' </summary>
     Sub DrawText()
         Dim g As Graphics = Graphics.FromImage(StoreBitmap())
@@ -60,6 +60,10 @@ Public Class EtchASketchForm
         DrawingPictureBox.Image = StoreBitmap()
     End Sub
 
+    ''' <summary>
+    ''' Draws an image the full size of the DrawingPictureBox
+    ''' </summary>
+    ''' <param name="imagePath"></param>
     Sub DrawImage(imagePath As String)
         Dim bmp As Image = StoreBitmap()
         Dim g As Graphics = Graphics.FromImage(bmp)
@@ -74,6 +78,11 @@ Public Class EtchASketchForm
         DrawingPictureBox.Image = StoreBitmap()
     End Sub
 
+    ''' <summary>
+    ''' Stores the Pen color for all of the graphics tools
+    ''' </summary>
+    ''' <param name="newColor"></param>
+    ''' <returns></returns>
     Function PenColor(Optional newColor As Color = Nothing) As Color
         Static _color As Color
 
@@ -83,6 +92,12 @@ Public Class EtchASketchForm
 
         Return _color
     End Function
+
+    ''' <summary>
+    ''' Stores the pen size for all of the graphics tools.
+    ''' </summary>
+    ''' <param name="newSize"></param>
+    ''' <returns></returns>
     Function PenSize(Optional newSize As Single = 0) As Single
         Static _size As Single
 
@@ -93,6 +108,13 @@ Public Class EtchASketchForm
         Return _size
     End Function
 
+    ''' <summary>
+    ''' Draws a straight line from the start x and y to the end x and y
+    ''' </summary>
+    ''' <param name="startX"></param>
+    ''' <param name="startY"></param>
+    ''' <param name="endX"></param>
+    ''' <param name="endY"></param>
     Sub MouseDraw(startX As Integer, startY As Integer, endX As Integer, endY As Integer)
         Dim g As Graphics = Graphics.FromImage(StoreBitmap())
         Dim pen As New Pen(PenColor(), PenSize())
@@ -103,6 +125,9 @@ Public Class EtchASketchForm
         DrawingPictureBox.Image = StoreBitmap()
     End Sub
 
+    ''' <summary>
+    ''' Draws scope divisions using the MouseDraw Sub
+    ''' </summary>
     Sub DrawDivisions()
         Dim xSpace As Integer = DrawingPictureBox.Width \ 10
         Dim ySpace As Integer = DrawingPictureBox.Height \ 8
@@ -122,6 +147,9 @@ Public Class EtchASketchForm
 
     End Sub
 
+    ''' <summary>
+    ''' Draws a sine wave on the bitmap using the MouseDraw function
+    ''' </summary>
     Sub DrawSinWave()
         Dim degToRad As Double = Math.PI / 180
         Dim oneDegree As Double = DrawingPictureBox.Width / 360
@@ -141,6 +169,10 @@ Public Class EtchASketchForm
 
     End Sub
 
+    ''' <summary>
+    ''' creates an empty bitmap with the correct size for the DrawingPictureBox
+    ''' </summary>
+    ''' <returns></returns>
     Function CreateBitmap() As Image
         Dim bmp As New Bitmap(DrawingPictureBox.Width, DrawingPictureBox.Height)
         Dim g As Graphics = Graphics.FromImage(bmp)
@@ -151,6 +183,11 @@ Public Class EtchASketchForm
         Return bmp
     End Function
 
+    ''' <summary>
+    ''' Stores the bitmap to be drawn on. If not provided with a new image, the bitmap will return the existing
+    ''' </summary>
+    ''' <param name="image"></param>
+    ''' <returns></returns>
     Function StoreBitmap(Optional image As Image = Nothing) As Image
         Static bmp As Bitmap
 
@@ -165,6 +202,12 @@ Public Class EtchASketchForm
     End Function
 
     '______Event Handlers Below Here______
+
+    ''' <summary>
+    ''' When the form is clicked, draws a line, rectangle, and circle on the picturebox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub GraphicsExampleForm_Click(sender As Object, e As EventArgs) Handles Me.Click
         DrawLine()
         DrawRectangle()
@@ -173,10 +216,20 @@ Public Class EtchASketchForm
         DrawImage("C:\Users\andre\Downloads\scifi-4916165_1920.jpg")
     End Sub
 
+    ''' <summary>
+    ''' closes the form when the exit button is clicked
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Calls the MouseDraw sub whenever the mouse moves and the left mouse button is held
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub DrawingPictureBox_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseDown, DrawingPictureBox.MouseMove
         Static oldX%, oldY%
 
@@ -191,31 +244,61 @@ Public Class EtchASketchForm
 
     End Sub
 
+    ''' <summary>
+    ''' Changes the pen color with a dialog
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub ColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ColorToolStripMenuItem.Click
         ColorDialog.ShowDialog()
         PenColor(ColorDialog.Color)
     End Sub
 
+    ''' <summary>
+    ''' Creates an empty bitmap and sets the pen to black when the form loads
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub GraphicsExampleForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         PenColor(Color.Black)
         StoreBitmap(CreateBitmap())
         DrawingPictureBox.Image = StoreBitmap()
     End Sub
 
+    ''' <summary>
+    ''' overwrites the existing bitmap with a blank bitmap
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         DrawingPictureBox.Image = StoreBitmap(CreateBitmap())
     End Sub
 
+    ''' <summary>
+    ''' Sets the background color of the picturebox
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub BackgroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click
         ColorDialog.ShowDialog()
         DrawingPictureBox.BackColor = ColorDialog.Color
     End Sub
 
+    ''' <summary>
+    ''' draws a oscilloscope view of a sine wave
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub WaveButton_Click(sender As Object, e As EventArgs) Handles WaveButton.Click
         DrawDivisions()
         DrawSinWave()
     End Sub
 
+    ''' <summary>
+    ''' opens and imports an image
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub OpenTopMenuItem_Click(sender As Object, e As EventArgs) Handles OpenTopMenuItem.Click
 
         OpenFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
@@ -228,6 +311,11 @@ Public Class EtchASketchForm
 
     End Sub
 
+    ''' <summary>
+    ''' prompts the user to save the current bitmap to file
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub SaveTopMenuItem_Click(sender As Object, e As EventArgs) Handles SaveTopMenuItem.Click
 
         SaveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
@@ -240,16 +328,26 @@ Public Class EtchASketchForm
 
     End Sub
 
+    ''' <summary>
+    ''' Scales the current bitmap when the form size is changed
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub GraphicsExampleForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        'If Me.Visible Then
+        If Me.Visible Then
 
-        '    Dim newbmp As New Bitmap(StoreBitmap(), DrawingPictureBox.Width, DrawingPictureBox.Height)
+            Dim newbmp As New Bitmap(StoreBitmap(), DrawingPictureBox.Width, DrawingPictureBox.Height)
 
-        '    DrawingPictureBox.Image = StoreBitmap(newbmp)
+            DrawingPictureBox.Image = StoreBitmap(newbmp)
 
-        'End If
+        End If
     End Sub
 
+    ''' <summary>
+    ''' sets the pen size whenever the trackbar is changed
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub PenSizeTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles PenSizeTrackBar.ValueChanged
         PenSize(PenSizeTrackBar.Value)
     End Sub
