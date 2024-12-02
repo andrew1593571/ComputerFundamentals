@@ -60,6 +60,7 @@ Partial Class AddressLabelForm
         'ClearButton
         '
         Me.ClearButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ClearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ClearButton.Location = New System.Drawing.Point(405, 290)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(106, 70)
