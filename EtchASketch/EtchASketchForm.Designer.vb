@@ -43,6 +43,8 @@ Partial Class EtchASketchForm
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BackgroundColorTopToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PenColorTopToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DrawWaveformToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
@@ -71,19 +73,19 @@ Partial Class EtchASketchForm
         '
         Me.ContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PenColorToolStripMenuItem, Me.BackgroundColorToolStripMenuItem})
         Me.ContextMenuStrip.Name = "ContextMenuStrip"
-        Me.ContextMenuStrip.Size = New System.Drawing.Size(181, 70)
+        Me.ContextMenuStrip.Size = New System.Drawing.Size(171, 48)
         '
         'PenColorToolStripMenuItem
         '
         Me.PenColorToolStripMenuItem.Name = "PenColorToolStripMenuItem"
-        Me.PenColorToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PenColorToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.PenColorToolStripMenuItem.Text = "Color"
         Me.PenColorToolStripMenuItem.ToolTipText = "Change the Pen Color"
         '
         'BackgroundColorToolStripMenuItem
         '
         Me.BackgroundColorToolStripMenuItem.Name = "BackgroundColorToolStripMenuItem"
-        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.BackgroundColorToolStripMenuItem.Text = "Background Color"
         Me.BackgroundColorToolStripMenuItem.ToolTipText = "Change the Background Color"
         '
@@ -140,6 +142,7 @@ Partial Class EtchASketchForm
         'ClearButton
         '
         Me.ClearButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ClearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ClearButton.Location = New System.Drawing.Point(520, 19)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(128, 75)
@@ -195,7 +198,7 @@ Partial Class EtchASketchForm
         '
         'EditToolStripMenuItem
         '
-        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BackgroundColorTopToolStripMenuItem, Me.PenColorTopToolStripMenuItem})
+        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BackgroundColorTopToolStripMenuItem, Me.PenColorTopToolStripMenuItem, Me.DrawWaveformToolStripMenuItem, Me.ClearToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
         Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.EditToolStripMenuItem.Text = "&Edit"
@@ -203,16 +206,28 @@ Partial Class EtchASketchForm
         'BackgroundColorTopToolStripMenuItem
         '
         Me.BackgroundColorTopToolStripMenuItem.Name = "BackgroundColorTopToolStripMenuItem"
-        Me.BackgroundColorTopToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BackgroundColorTopToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.BackgroundColorTopToolStripMenuItem.Text = "&Background Color"
         Me.BackgroundColorTopToolStripMenuItem.ToolTipText = "Change the Background Color"
         '
         'PenColorTopToolStripMenuItem
         '
         Me.PenColorTopToolStripMenuItem.Name = "PenColorTopToolStripMenuItem"
-        Me.PenColorTopToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PenColorTopToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.PenColorTopToolStripMenuItem.Text = "&Pen Color"
         Me.PenColorTopToolStripMenuItem.ToolTipText = "Change the Pen Color"
+        '
+        'DrawWaveformToolStripMenuItem
+        '
+        Me.DrawWaveformToolStripMenuItem.Name = "DrawWaveformToolStripMenuItem"
+        Me.DrawWaveformToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.DrawWaveformToolStripMenuItem.Text = "Draw &Waveform"
+        '
+        'ClearToolStripMenuItem
+        '
+        Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.ClearToolStripMenuItem.Text = "&Clear"
         '
         'HelpTopMenuItem
         '
@@ -230,8 +245,10 @@ Partial Class EtchASketchForm
         '
         'EtchASketchForm
         '
+        Me.AcceptButton = Me.WaveButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.ClearButton
         Me.ClientSize = New System.Drawing.Size(812, 461)
         Me.Controls.Add(Me.TopMenuStrip)
         Me.Controls.Add(Me.ControlsGroupBox)
@@ -275,4 +292,6 @@ Partial Class EtchASketchForm
     Friend WithEvents EditToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BackgroundColorTopToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PenColorTopToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DrawWaveformToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClearToolStripMenuItem As ToolStripMenuItem
 End Class

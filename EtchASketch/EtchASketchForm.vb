@@ -270,7 +270,7 @@ Public Class EtchASketchForm
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+    Private Sub ClearScreen(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearToolStripMenuItem.Click
         DrawingPictureBox.Image = StoreBitmap(CreateBitmap())
     End Sub
 
@@ -296,7 +296,7 @@ Public Class EtchASketchForm
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub WaveButton_Click(sender As Object, e As EventArgs) Handles WaveButton.Click
+    Private Sub DrawWave(sender As Object, e As EventArgs) Handles WaveButton.Click, DrawWaveformToolStripMenuItem.Click
         DrawDivisions()
         DrawSinWave()
     End Sub
