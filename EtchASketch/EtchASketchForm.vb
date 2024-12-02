@@ -61,13 +61,15 @@ Public Class EtchASketchForm
     End Sub
 
     Sub DrawImage(imagePath As String)
-        Dim g As Graphics = Graphics.FromImage(StoreBitmap())
+        Dim bmp As Image = StoreBitmap()
+        Dim g As Graphics = Graphics.FromImage(bmp)
         Dim image As Image = Image.FromFile(imagePath)
 
         Dim resized As New Bitmap(image, DrawingPictureBox.Width, DrawingPictureBox.Height)
 
         g.DrawImage(resized, 0, 0)
 
+        StoreBitmap(bmp)
         g.Dispose()
         DrawingPictureBox.Image = StoreBitmap()
     End Sub
@@ -155,8 +157,10 @@ Public Class EtchASketchForm
         If image Is Nothing Then
             Return bmp
         Else
-            bmp = New Bitmap(image)
+            bmp = CreateBitmap()
+            MsgBox("Created new Bitmap")
             Return bmp
+
         End If
 
     End Function
@@ -193,7 +197,7 @@ Public Class EtchASketchForm
         PenColor(ColorDialog.Color)
     End Sub
 
-    Private Sub GraphicsExampleForm_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+    Private Sub GraphicsExampleForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         PenColor(Color.Black)
         StoreBitmap(CreateBitmap())
         DrawingPictureBox.Image = StoreBitmap()
@@ -230,6 +234,7 @@ Public Class EtchASketchForm
         SaveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)
         SaveFileDialog.FileName = $"Untitled-{DateTime.Today.Now.ToString("yyMMddhhmmss")}.bmp"
 
+        'opens the SaveFileDialog
         SaveFileDialog.ShowDialog()
 
         StoreBitmap().Save(SaveFileDialog.FileName)
@@ -237,13 +242,13 @@ Public Class EtchASketchForm
     End Sub
 
     Private Sub GraphicsExampleForm_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        If Me.Visible Then
+        'If Me.Visible Then
 
-            Dim newbmp As New Bitmap(StoreBitmap(), DrawingPictureBox.Width, DrawingPictureBox.Height)
+        '    Dim newbmp As New Bitmap(StoreBitmap(), DrawingPictureBox.Width, DrawingPictureBox.Height)
 
-            DrawingPictureBox.Image = StoreBitmap(newbmp)
+        '    DrawingPictureBox.Image = StoreBitmap(newbmp)
 
-        End If
+        'End If
     End Sub
 
     Private Sub PenSizeTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles PenSizeTrackBar.ValueChanged

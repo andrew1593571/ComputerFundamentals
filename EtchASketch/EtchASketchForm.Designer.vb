@@ -36,16 +36,17 @@ Partial Class EtchASketchForm
         Me.ColorDialog = New System.Windows.Forms.ColorDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.TopMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpTopMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip.SuspendLayout()
         Me.ControlsGroupBox.SuspendLayout()
         CType(Me.PenSizeTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
+        Me.TopMenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'DrawingPictureBox
@@ -148,14 +149,14 @@ Partial Class EtchASketchForm
         '
         Me.OpenFileDialog.FileName = "OpenFileDialog1"
         '
-        'MenuStrip1
+        'TopMenuStrip
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileTopMenuItem, Me.HelpTopMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(812, 24)
-        Me.MenuStrip1.TabIndex = 2
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.TopMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileTopMenuItem, Me.HelpTopMenuItem})
+        Me.TopMenuStrip.Location = New System.Drawing.Point(0, 0)
+        Me.TopMenuStrip.Name = "TopMenuStrip"
+        Me.TopMenuStrip.Size = New System.Drawing.Size(812, 24)
+        Me.TopMenuStrip.TabIndex = 2
+        Me.TopMenuStrip.Text = "MenuStrip1"
         '
         'FileTopMenuItem
         '
@@ -167,30 +168,37 @@ Partial Class EtchASketchForm
         'OpenTopMenuItem
         '
         Me.OpenTopMenuItem.Name = "OpenTopMenuItem"
-        Me.OpenTopMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.OpenTopMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenTopMenuItem.Text = "&Open"
         '
         'SaveTopMenuItem
         '
         Me.SaveTopMenuItem.Name = "SaveTopMenuItem"
-        Me.SaveTopMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.SaveTopMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveTopMenuItem.Text = "&Save"
         '
         'HelpTopMenuItem
         '
+        Me.HelpTopMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpTopMenuItem.Name = "HelpTopMenuItem"
         Me.HelpTopMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpTopMenuItem.Text = "&Help"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AboutToolStripMenuItem.Text = "About"
         '
         'EtchASketchForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 461)
-        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.TopMenuStrip)
         Me.Controls.Add(Me.ControlsGroupBox)
         Me.Controls.Add(Me.DrawingPictureBox)
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.MainMenuStrip = Me.TopMenuStrip
         Me.Name = "EtchASketchForm"
         Me.Text = "Etch-A-Sketch"
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
@@ -198,8 +206,8 @@ Partial Class EtchASketchForm
         Me.ControlsGroupBox.ResumeLayout(False)
         Me.ControlsGroupBox.PerformLayout()
         CType(Me.PenSizeTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        Me.TopMenuStrip.ResumeLayout(False)
+        Me.TopMenuStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -216,11 +224,12 @@ Partial Class EtchASketchForm
     Friend WithEvents WaveButton As Button
     Friend WithEvents SaveFileDialog As SaveFileDialog
     Friend WithEvents OpenFileDialog As OpenFileDialog
-    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents TopMenuStrip As MenuStrip
     Friend WithEvents FileTopMenuItem As ToolStripMenuItem
     Friend WithEvents OpenTopMenuItem As ToolStripMenuItem
     Friend WithEvents SaveTopMenuItem As ToolStripMenuItem
     Friend WithEvents HelpTopMenuItem As ToolStripMenuItem
     Friend WithEvents PenSizeLabel As Label
     Friend WithEvents PenSizeTrackBar As TrackBar
+    Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
 End Class
