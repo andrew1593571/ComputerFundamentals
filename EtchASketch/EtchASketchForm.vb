@@ -356,4 +356,8 @@ Public Class EtchASketchForm
         Me.Hide()
         AboutForm.Show()
     End Sub
+
+    Private Sub ContextMenuStrip_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip.Opening
+
+    End Sub
 End Class
