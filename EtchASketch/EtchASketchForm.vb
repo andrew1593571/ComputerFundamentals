@@ -351,4 +351,9 @@ Public Class EtchASketchForm
     Private Sub PenSizeTrackBar_ValueChanged(sender As Object, e As EventArgs) Handles PenSizeTrackBar.ValueChanged
         PenSize(PenSizeTrackBar.Value)
     End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Me.Hide()
+        AboutForm.Show()
+    End Sub
 End Class

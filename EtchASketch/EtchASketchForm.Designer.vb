@@ -123,6 +123,7 @@ Partial Class EtchASketchForm
         Me.WaveButton.Size = New System.Drawing.Size(128, 75)
         Me.WaveButton.TabIndex = 2
         Me.WaveButton.Text = "&Wave"
+        Me.WaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage
         Me.WaveButton.UseVisualStyleBackColor = True
         '
         'ClearButton
@@ -200,6 +201,7 @@ Partial Class EtchASketchForm
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.MainMenuStrip = Me.TopMenuStrip
         Me.Name = "EtchASketchForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Etch-A-Sketch"
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip.ResumeLayout(False)
