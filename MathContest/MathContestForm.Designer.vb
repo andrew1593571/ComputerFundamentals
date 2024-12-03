@@ -47,7 +47,9 @@ Partial Class MathContestForm
         Me.SummaryButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.SubmitButton = New System.Windows.Forms.Button()
-        Me.InformationTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.NameTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.AgeTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.GradeTimer = New System.Windows.Forms.Timer(Me.components)
         Me.StudentInformationGroupBox.SuspendLayout()
         Me.ProblemGroupBox.SuspendLayout()
         Me.ProblemTypeGroupBox.SuspendLayout()
@@ -290,9 +292,17 @@ Partial Class MathContestForm
         Me.SubmitButton.Text = "Submit"
         Me.SubmitButton.UseVisualStyleBackColor = True
         '
-        'InformationTimer
+        'NameTimer
         '
-        Me.InformationTimer.Interval = 3000
+        Me.NameTimer.Interval = 500
+        '
+        'AgeTimer
+        '
+        Me.AgeTimer.Interval = 500
+        '
+        'GradeTimer
+        '
+        Me.GradeTimer.Interval = 500
         '
         'MathContestForm
         '
@@ -342,5 +352,7 @@ Partial Class MathContestForm
     Friend WithEvents SubmitButton As Button
     Friend WithEvents ExitButton As Button
     Friend WithEvents SummaryButton As Button
-    Friend WithEvents InformationTimer As Timer
+    Friend WithEvents NameTimer As Timer
+    Friend WithEvents AgeTimer As Timer
+    Friend WithEvents GradeTimer As Timer
 End Class
