@@ -22,6 +22,7 @@ Partial Class MathContestForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.StudentInformationGroupBox = New System.Windows.Forms.GroupBox()
         Me.GradeLabel = New System.Windows.Forms.Label()
         Me.AgeLabel = New System.Windows.Forms.Label()
@@ -42,10 +43,11 @@ Partial Class MathContestForm
         Me.SubtractRadioButton = New System.Windows.Forms.RadioButton()
         Me.AddRadioButton = New System.Windows.Forms.RadioButton()
         Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
-        Me.SubmitButton = New System.Windows.Forms.Button()
-        Me.ClearButton = New System.Windows.Forms.Button()
-        Me.SummaryButton = New System.Windows.Forms.Button()
         Me.ExitButton = New System.Windows.Forms.Button()
+        Me.SummaryButton = New System.Windows.Forms.Button()
+        Me.ClearButton = New System.Windows.Forms.Button()
+        Me.SubmitButton = New System.Windows.Forms.Button()
+        Me.InformationTimer = New System.Windows.Forms.Timer(Me.components)
         Me.StudentInformationGroupBox.SuspendLayout()
         Me.ProblemGroupBox.SuspendLayout()
         Me.ProblemTypeGroupBox.SuspendLayout()
@@ -250,24 +252,14 @@ Partial Class MathContestForm
         Me.ButtonGroupBox.TabIndex = 3
         Me.ButtonGroupBox.TabStop = False
         '
-        'SubmitButton
+        'ExitButton
         '
-        Me.SubmitButton.Enabled = False
-        Me.SubmitButton.Location = New System.Drawing.Point(6, 21)
-        Me.SubmitButton.Name = "SubmitButton"
-        Me.SubmitButton.Size = New System.Drawing.Size(109, 45)
-        Me.SubmitButton.TabIndex = 0
-        Me.SubmitButton.Text = "Submit"
-        Me.SubmitButton.UseVisualStyleBackColor = True
-        '
-        'ClearButton
-        '
-        Me.ClearButton.Location = New System.Drawing.Point(6, 72)
-        Me.ClearButton.Name = "ClearButton"
-        Me.ClearButton.Size = New System.Drawing.Size(109, 45)
-        Me.ClearButton.TabIndex = 1
-        Me.ClearButton.Text = "Clear"
-        Me.ClearButton.UseVisualStyleBackColor = True
+        Me.ExitButton.Location = New System.Drawing.Point(6, 174)
+        Me.ExitButton.Name = "ExitButton"
+        Me.ExitButton.Size = New System.Drawing.Size(109, 45)
+        Me.ExitButton.TabIndex = 3
+        Me.ExitButton.Text = "Exit"
+        Me.ExitButton.UseVisualStyleBackColor = True
         '
         'SummaryButton
         '
@@ -279,14 +271,28 @@ Partial Class MathContestForm
         Me.SummaryButton.Text = "Summary"
         Me.SummaryButton.UseVisualStyleBackColor = True
         '
-        'ExitButton
+        'ClearButton
         '
-        Me.ExitButton.Location = New System.Drawing.Point(6, 174)
-        Me.ExitButton.Name = "ExitButton"
-        Me.ExitButton.Size = New System.Drawing.Size(109, 45)
-        Me.ExitButton.TabIndex = 3
-        Me.ExitButton.Text = "Exit"
-        Me.ExitButton.UseVisualStyleBackColor = True
+        Me.ClearButton.Location = New System.Drawing.Point(6, 72)
+        Me.ClearButton.Name = "ClearButton"
+        Me.ClearButton.Size = New System.Drawing.Size(109, 45)
+        Me.ClearButton.TabIndex = 1
+        Me.ClearButton.Text = "Clear"
+        Me.ClearButton.UseVisualStyleBackColor = True
+        '
+        'SubmitButton
+        '
+        Me.SubmitButton.Enabled = False
+        Me.SubmitButton.Location = New System.Drawing.Point(6, 21)
+        Me.SubmitButton.Name = "SubmitButton"
+        Me.SubmitButton.Size = New System.Drawing.Size(109, 45)
+        Me.SubmitButton.TabIndex = 0
+        Me.SubmitButton.Text = "Submit"
+        Me.SubmitButton.UseVisualStyleBackColor = True
+        '
+        'InformationTimer
+        '
+        Me.InformationTimer.Interval = 3000
         '
         'MathContestForm
         '
@@ -336,4 +342,5 @@ Partial Class MathContestForm
     Friend WithEvents SubmitButton As Button
     Friend WithEvents ExitButton As Button
     Friend WithEvents SummaryButton As Button
+    Friend WithEvents InformationTimer As Timer
 End Class
