@@ -2,8 +2,6 @@
 Option Strict On
 Imports System.Security.Cryptography
 
-
-
 'Andrew Keller
 'RCET2265
 'Fall 2024
@@ -138,6 +136,9 @@ Public Class MathContestForm
         Return status
     End Function
 
+    ''' <summary>
+    ''' Validates the entry to the NameTextBox is not empty
+    ''' </summary>
     Sub ValidateName()
         Dim infoState() As Boolean = CheckStatus()
         'Check that the name is not blank
@@ -152,6 +153,9 @@ Public Class MathContestForm
         CheckStatus(False, infoState)
     End Sub
 
+    ''' <summary>
+    ''' Validates the entry to the AgeTextBox is a valid age for the contest
+    ''' </summary>
     Sub ValidateAge()
         Dim infoState() As Boolean = CheckStatus()
         Dim studentAge As Integer
@@ -178,6 +182,9 @@ Public Class MathContestForm
         CheckStatus(False, infoState)
     End Sub
 
+    ''' <summary>
+    ''' Validates the entry to the GradeTextBox is a valid grade for the contest
+    ''' </summary>
     Sub ValidateGrade()
         Dim infoState() As Boolean = CheckStatus()
         Dim studentGrade As Integer
@@ -239,6 +246,10 @@ Public Class MathContestForm
 
 
     '###___EVENT HANDLERS BELOW HERE___###
+
+    'the NameTimer, AgeTimer, and GradeTimer are all used to prevent
+    'error messages from appearing while the user is actively typing
+    'in the associated field
     Private Sub NameTimer_Tick(sender As Object, e As EventArgs) Handles NameTimer.Tick
         'Stops the timer, then validates the student name
         NameTimer.Stop()
@@ -337,6 +348,11 @@ Public Class MathContestForm
         MsgBox($"{CurrentStudentName()} has answered {CStr(AnsweredCorrectly())} correctly out of a possible {CStr(ProblemsSolved())}.")
     End Sub
 
+    ''' <summary>
+    ''' Clears the student information and resets the interface back to defaults
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         'Clear the current name, age, and grade
         CurrentStudentName("", True)
@@ -368,5 +384,14 @@ Public Class MathContestForm
         'Disable the submit and summary buttons
         SubmitButton.Enabled = False
         SummaryButton.Enabled = False
+    End Sub
+
+    ''' <summary>
+    ''' Closes the form
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
+        Me.Close() 'closes the form
     End Sub
 End Class

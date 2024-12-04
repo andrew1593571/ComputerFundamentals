@@ -96,6 +96,7 @@ Partial Class MathContestForm
         Me.GradeTextBox.Name = "GradeTextBox"
         Me.GradeTextBox.Size = New System.Drawing.Size(41, 20)
         Me.GradeTextBox.TabIndex = 3
+        Me.ToolTip.SetToolTip(Me.GradeTextBox, "Student Grade Between 1 and 4")
         '
         'AgeTextBox
         '
@@ -103,6 +104,7 @@ Partial Class MathContestForm
         Me.AgeTextBox.Name = "AgeTextBox"
         Me.AgeTextBox.Size = New System.Drawing.Size(41, 20)
         Me.AgeTextBox.TabIndex = 2
+        Me.ToolTip.SetToolTip(Me.AgeTextBox, "Student Age Between 7 and 11")
         '
         'NameTextBox
         '
@@ -110,6 +112,7 @@ Partial Class MathContestForm
         Me.NameTextBox.Name = "NameTextBox"
         Me.NameTextBox.Size = New System.Drawing.Size(155, 20)
         Me.NameTextBox.TabIndex = 1
+        Me.ToolTip.SetToolTip(Me.NameTextBox, "Student Full Name")
         '
         'NameLabel
         '
@@ -141,7 +144,8 @@ Partial Class MathContestForm
         Me.AnswerTextBox.Location = New System.Drawing.Point(10, 132)
         Me.AnswerTextBox.Name = "AnswerTextBox"
         Me.AnswerTextBox.Size = New System.Drawing.Size(155, 20)
-        Me.AnswerTextBox.TabIndex = 7
+        Me.AnswerTextBox.TabIndex = 0
+        Me.ToolTip.SetToolTip(Me.AnswerTextBox, "The Student's Answer")
         '
         'AnswerLabel
         '
@@ -159,6 +163,8 @@ Partial Class MathContestForm
         Me.Number2TextBox.ReadOnly = True
         Me.Number2TextBox.Size = New System.Drawing.Size(155, 20)
         Me.Number2TextBox.TabIndex = 5
+        Me.Number2TextBox.TabStop = False
+        Me.ToolTip.SetToolTip(Me.Number2TextBox, "The Second Number in the Equation.")
         '
         'Number2Label
         '
@@ -176,6 +182,8 @@ Partial Class MathContestForm
         Me.Number1TextBox.ReadOnly = True
         Me.Number1TextBox.Size = New System.Drawing.Size(155, 20)
         Me.Number1TextBox.TabIndex = 3
+        Me.Number1TextBox.TabStop = False
+        Me.ToolTip.SetToolTip(Me.Number1TextBox, "The first number in the equation")
         '
         'Number1Label
         '
@@ -199,6 +207,7 @@ Partial Class MathContestForm
         Me.ProblemTypeGroupBox.TabIndex = 2
         Me.ProblemTypeGroupBox.TabStop = False
         Me.ProblemTypeGroupBox.Text = "Math Problem Type"
+        Me.ToolTip.SetToolTip(Me.ProblemTypeGroupBox, "The Math Problem Type")
         '
         'DivideRadioButton
         '
@@ -262,16 +271,19 @@ Partial Class MathContestForm
         Me.ExitButton.Size = New System.Drawing.Size(109, 45)
         Me.ExitButton.TabIndex = 3
         Me.ExitButton.Text = "Exit"
+        Me.ToolTip.SetToolTip(Me.ExitButton, "Exits the program")
         Me.ExitButton.UseVisualStyleBackColor = True
         '
         'SummaryButton
         '
+        Me.SummaryButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.SummaryButton.Enabled = False
         Me.SummaryButton.Location = New System.Drawing.Point(6, 123)
         Me.SummaryButton.Name = "SummaryButton"
         Me.SummaryButton.Size = New System.Drawing.Size(109, 45)
         Me.SummaryButton.TabIndex = 2
         Me.SummaryButton.Text = "Summary"
+        Me.ToolTip.SetToolTip(Me.SummaryButton, "Presents a summary for the current student")
         Me.SummaryButton.UseVisualStyleBackColor = True
         '
         'ClearButton
@@ -281,6 +293,7 @@ Partial Class MathContestForm
         Me.ClearButton.Size = New System.Drawing.Size(109, 45)
         Me.ClearButton.TabIndex = 1
         Me.ClearButton.Text = "Clear"
+        Me.ToolTip.SetToolTip(Me.ClearButton, "Clears the current student and resets the interface")
         Me.ClearButton.UseVisualStyleBackColor = True
         '
         'SubmitButton
@@ -291,6 +304,7 @@ Partial Class MathContestForm
         Me.SubmitButton.Size = New System.Drawing.Size(109, 45)
         Me.SubmitButton.TabIndex = 0
         Me.SubmitButton.Text = "Submit"
+        Me.ToolTip.SetToolTip(Me.SubmitButton, "Submits the Student Answer")
         Me.SubmitButton.UseVisualStyleBackColor = True
         '
         'NameTimer
@@ -307,8 +321,10 @@ Partial Class MathContestForm
         '
         'MathContestForm
         '
+        Me.AcceptButton = Me.SubmitButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.SummaryButton
         Me.ClientSize = New System.Drawing.Size(448, 271)
         Me.Controls.Add(Me.ButtonGroupBox)
         Me.Controls.Add(Me.ProblemTypeGroupBox)
