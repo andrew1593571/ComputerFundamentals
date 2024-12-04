@@ -13,6 +13,42 @@ Imports System.Security.Cryptography
 Public Class MathContestForm
 
     ''' <summary>
+    ''' Stores the total number of problems solved
+    ''' </summary>
+    ''' <param name="additional"></param>
+    ''' <param name="clear"></param>
+    ''' <returns></returns>
+    Function ProblemsSolved(Optional additional As Integer = 0, Optional clear As Boolean = False) As Integer
+        Static total As Integer
+
+        If clear Then
+            total = 0
+        Else
+            total += additional
+        End If
+
+        Return total
+    End Function
+
+    ''' <summary>
+    ''' Stores the number of problems correctly answered
+    ''' </summary>
+    ''' <param name="additional"></param>
+    ''' <param name="clear"></param>
+    ''' <returns></returns>
+    Function AnsweredCorrectly(Optional additional As Integer = 0, Optional clear As Boolean = False) As Integer
+        Static totalCorrect As Integer
+
+        If clear Then
+            totalCorrect = 0
+        Else
+            totalCorrect += additional
+        End If
+
+        Return totalCorrect
+    End Function
+
+    ''' <summary>
     ''' Stores and returns the current math problem. Also generates new problems
     ''' </summary>
     ''' <param name="newProblem">When True,generates a new problem</param>
@@ -21,7 +57,9 @@ Public Class MathContestForm
         Static _numberOne As Integer
         Static _numberTwo As Integer
 
+        'Clear the current student answer and generate a new one
         If newProblem Then
+            AnswerTextBox.Text = ""
             _numberOne = GetRandomNumberInRange(10 * CurrentStudentGrade(), 1)
             _numberTwo = GetRandomNumberInRange(10 * CurrentStudentGrade(), 1)
         End If
@@ -232,6 +270,12 @@ Public Class MathContestForm
         GradeTimer.Start()
     End Sub
 
+    ''' <summary>
+    ''' When the submit button is clicked, determines if the student answered correctly, 
+    ''' unlocks the summary button, locks the student information, generates new problem
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         Dim correctAnswer As Integer
         Dim problem() As Integer = CurrentProblem()
@@ -240,7 +284,6 @@ Public Class MathContestForm
         'Determine the correct answer for the selected math type
         Select Case True
             Case AddRadioButton.Checked
-                'Addition
                 correctAnswer = problem(0) + problem(1)
             Case SubtractRadioButton.Checked
                 correctAnswer = problem(0) - problem(1)
@@ -250,6 +293,7 @@ Public Class MathContestForm
                 correctAnswer = problem(0) \ problem(1)
         End Select
 
+        'Convert the student answer to an integer from a string
         Try
             studentAnswer = CInt(AnswerTextBox.Text)
         Catch ex As Exception
@@ -257,10 +301,22 @@ Public Class MathContestForm
             Exit Sub
         End Try
 
+        'Check if the student answer is correct
         If studentAnswer = correctAnswer Then
             MsgBox("Congratulations! You answered correctly!")
+            AnsweredCorrectly(1) 'add one to the total answered correctly
         Else
             MsgBox($"The correct answer was {CStr(correctAnswer)}.")
         End If
+
+        ProblemsSolved(1) 'Add one to the total number of problems solved
+
+        'enable the summary button once submit is clicked and lock the student information
+        SummaryButton.Enabled = True
+        NameTextBox.ReadOnly = True
+        AgeTextBox.ReadOnly = True
+        GradeTextBox.ReadOnly = True
+
+        CurrentProblem(True) 'Generate new problem
     End Sub
 End Class
