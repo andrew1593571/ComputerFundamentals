@@ -75,10 +75,12 @@ Public Class MathContestForm
     ''' </summary>
     ''' <param name="age"></param>
     ''' <returns></returns>
-    Function CurrentStudentAge(Optional age As Integer = 0) As Integer
+    Function CurrentStudentAge(Optional age As Integer = 0, Optional clear As Boolean = False) As Integer
         Static _studentAge As Integer
 
-        If age <> 0 Then
+        If clear Then
+            _studentAge = 0
+        ElseIf age <> 0 Then
             _studentAge = age
         End If
 
@@ -90,10 +92,12 @@ Public Class MathContestForm
     ''' </summary>
     ''' <param name="grade"></param>
     ''' <returns></returns>
-    Function CurrentStudentGrade(Optional grade As Integer = 0) As Integer
+    Function CurrentStudentGrade(Optional grade As Integer = 0, Optional clear As Boolean = False) As Integer
         Static _studentGrade As Integer
 
-        If grade <> 0 Then
+        If clear Then
+            _studentGrade = 0
+        ElseIf grade <> 0 Then
             _studentGrade = grade
         End If
 
@@ -105,10 +109,12 @@ Public Class MathContestForm
     ''' </summary>
     ''' <param name="name"></param>
     ''' <returns></returns>
-    Function CurrentStudentName(Optional name As String = "") As String
+    Function CurrentStudentName(Optional name As String = "", Optional clear As Boolean = False) As String
         Static _studentName As String
 
-        If name <> "" Then
+        If clear Then
+            _studentName = ""
+        ElseIf name <> "" Then
             _studentName = name
         End If
 
@@ -120,10 +126,12 @@ Public Class MathContestForm
     ''' </summary>
     ''' <param name="newStatus"></param>
     ''' <returns></returns>
-    Function CheckStatus(Optional newStatus As Boolean() = Nothing) As Boolean()
+    Function CheckStatus(Optional clear As Boolean = False, Optional newStatus As Boolean() = Nothing) As Boolean()
         Static status() As Boolean = {False, False, False}
 
-        If newStatus IsNot Nothing Then
+        If clear Then
+            status = {False, False, False}
+        ElseIf newStatus IsNot Nothing Then
             status = newStatus
         End If
 
@@ -141,7 +149,7 @@ Public Class MathContestForm
             infoState(0) = True
             CurrentStudentName(NameTextBox.Text)
         End If
-        CheckStatus(infoState)
+        CheckStatus(False, infoState)
     End Sub
 
     Sub ValidateAge()
@@ -167,7 +175,7 @@ Public Class MathContestForm
         Else
             MsgBox("Please enter a student age.")
         End If
-        CheckStatus(infoState)
+        CheckStatus(False, infoState)
     End Sub
 
     Sub ValidateGrade()
@@ -193,7 +201,7 @@ Public Class MathContestForm
         Else
             MsgBox("Please enter a student grade.")
         End If
-        CheckStatus(infoState)
+        CheckStatus(False, infoState)
     End Sub
 
     ''' <summary>
@@ -327,5 +335,38 @@ Public Class MathContestForm
     ''' <param name="e"></param>
     Private Sub SummaryButton_Click(sender As Object, e As EventArgs) Handles SummaryButton.Click
         MsgBox($"{CurrentStudentName()} has answered {CStr(AnsweredCorrectly())} correctly out of a possible {CStr(ProblemsSolved())}.")
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        'Clear the current name, age, and grade
+        CurrentStudentName("", True)
+        CurrentStudentAge(0, True)
+        CurrentStudentGrade(0, True)
+        CheckStatus(True)
+
+        'Resets the number of problems presented
+        AnsweredCorrectly(0, True)
+        ProblemsSolved(0, True)
+
+        'clear the student information inputs
+        NameTextBox.Text = ""
+        AgeTextBox.Text = ""
+        GradeTextBox.Text = ""
+
+        'prevents the error messageboxes from appearing
+        NameTimer.Stop()
+        AgeTimer.Stop()
+        GradeTimer.Stop()
+
+        'Disables the problem group boxes and allows editing in the information boxes
+        ProblemGroupBox.Enabled = False
+        ProblemTypeGroupBox.Enabled = False
+        NameTextBox.ReadOnly = False
+        GradeTextBox.ReadOnly = False
+        AgeTextBox.ReadOnly = False
+
+        'Disable the submit and summary buttons
+        SubmitButton.Enabled = False
+        SummaryButton.Enabled = False
     End Sub
 End Class
