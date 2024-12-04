@@ -11,6 +11,72 @@ Imports System.Security.Cryptography
 'https://github.com/andrew1593571/MathContest.git
 
 Public Class MathContestForm
+
+    ''' <summary>
+    ''' Stores and returns the current math problem. Also generates new problems
+    ''' </summary>
+    ''' <param name="newProblem">When True,generates a new problem</param>
+    ''' <returns></returns>
+    Function CurrentProblem(Optional newProblem As Boolean = False) As Integer()
+        Static _numberOne As Integer
+        Static _numberTwo As Integer
+
+        If newProblem Then
+            _numberOne = GetRandomNumberInRange(10 * CurrentStudentGrade(), 1)
+            _numberTwo = GetRandomNumberInRange(10 * CurrentStudentGrade(), 1)
+        End If
+
+        Number1TextBox.Text = CStr(_numberOne)
+        Number2TextBox.Text = CStr(_numberTwo)
+
+        Return {_numberOne, _numberTwo}
+    End Function
+
+    ''' <summary>
+    ''' Stores the Current Student age
+    ''' </summary>
+    ''' <param name="age"></param>
+    ''' <returns></returns>
+    Function CurrentStudentAge(Optional age As Integer = 0) As Integer
+        Static _studentAge As Integer
+
+        If age <> 0 Then
+            _studentAge = age
+        End If
+
+        Return _studentAge
+    End Function
+
+    ''' <summary>
+    ''' Stores the current student Grade
+    ''' </summary>
+    ''' <param name="grade"></param>
+    ''' <returns></returns>
+    Function CurrentStudentGrade(Optional grade As Integer = 0) As Integer
+        Static _studentGrade As Integer
+
+        If grade <> 0 Then
+            _studentGrade = grade
+        End If
+
+        Return _studentGrade
+    End Function
+
+    ''' <summary>
+    ''' Stores the current student name
+    ''' </summary>
+    ''' <param name="name"></param>
+    ''' <returns></returns>
+    Function CurrentStudentName(Optional name As String = "") As String
+        Static _studentName As String
+
+        If name <> "" Then
+            _studentName = name
+        End If
+
+        Return _studentName
+    End Function
+
     ''' <summary>
     ''' Stores the current information check status of the student information
     ''' </summary>
@@ -35,6 +101,7 @@ Public Class MathContestForm
         Else
             'set infoState to True
             infoState(0) = True
+            CurrentStudentName(NameTextBox.Text)
         End If
         CheckStatus(infoState)
     End Sub
@@ -52,6 +119,7 @@ Public Class MathContestForm
                 studentAge = CInt(AgeTextBox.Text)
                 If studentAge >= 7 And studentAge <= 11 Then
                     infoState(1) = True
+                    CurrentStudentAge(studentAge)
                 Else
                     MsgBox("Age must be between 7 and 11.")
                 End If
@@ -77,6 +145,7 @@ Public Class MathContestForm
                 studentGrade = CInt(GradeTextBox.Text)
                 If studentGrade >= 1 And studentGrade <= 4 Then
                     infoState(2) = True
+                    CurrentStudentGrade(studentGrade)
                 Else
                     MsgBox("Grade must be between 1 and 4.")
                 End If
@@ -102,10 +171,28 @@ Public Class MathContestForm
             ProblemGroupBox.Enabled = True
             ProblemTypeGroupBox.Enabled = True
             SubmitButton.Enabled = True
+            CurrentProblem(True)
         End If
 
     End Sub
 
+    ''' <summary>
+    ''' Returns a random number in the specified range
+    ''' </summary>
+    ''' <param name="Max"></param>
+    ''' <param name="Min"></param>
+    ''' <returns></returns>
+    Function GetRandomNumberInRange(Max As Integer, Optional Min As Integer = 0) As Integer
+        Dim randomNumber As Integer
+
+        Randomize(DateTime.Now.Millisecond)
+        randomNumber = CInt(Math.Floor((Rnd() * ((Max - Min) + 1)))) + Min
+
+        Return randomNumber
+    End Function
+
+
+    '###___EVENT HANDLERS BELOW HERE___###
     Private Sub NameTimer_Tick(sender As Object, e As EventArgs) Handles NameTimer.Tick
         'Stops the timer, then validates the student name
         NameTimer.Stop()
@@ -143,5 +230,37 @@ Public Class MathContestForm
         'Stops then starts the GradeTimer to prevent triggering checks while the user is typing
         GradeTimer.Stop()
         GradeTimer.Start()
+    End Sub
+
+    Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
+        Dim correctAnswer As Integer
+        Dim problem() As Integer = CurrentProblem()
+        Dim studentAnswer As Integer
+
+        'Determine the correct answer for the selected math type
+        Select Case True
+            Case AddRadioButton.Checked
+                'Addition
+                correctAnswer = problem(0) + problem(1)
+            Case SubtractRadioButton.Checked
+                correctAnswer = problem(0) - problem(1)
+            Case MultiplyRadioButton.Checked
+                correctAnswer = problem(0) * problem(1)
+            Case DivideRadioButton.Checked
+                correctAnswer = problem(0) \ problem(1)
+        End Select
+
+        Try
+            studentAnswer = CInt(AnswerTextBox.Text)
+        Catch ex As Exception
+            MsgBox("Student answer is not a whole number.")
+            Exit Sub
+        End Try
+
+        If studentAnswer = correctAnswer Then
+            MsgBox("Congratulations! You answered correctly!")
+        Else
+            MsgBox($"The correct answer was {CStr(correctAnswer)}.")
+        End If
     End Sub
 End Class
