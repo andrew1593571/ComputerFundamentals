@@ -319,4 +319,13 @@ Public Class MathContestForm
 
         CurrentProblem(True) 'Generate new problem
     End Sub
+
+    ''' <summary>
+    ''' Presents a messagebox to the user with the number answered correct and total asked
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub SummaryButton_Click(sender As Object, e As EventArgs) Handles SummaryButton.Click
+        MsgBox($"{CurrentStudentName()} has answered {CStr(AnsweredCorrectly())} correctly out of a possible {CStr(ProblemsSolved())}.")
+    End Sub
 End Class
