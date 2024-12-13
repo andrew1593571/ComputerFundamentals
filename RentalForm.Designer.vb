@@ -60,16 +60,16 @@ Partial Class RentalForm
         Me.TotalDiscountTextBox = New System.Windows.Forms.TextBox()
         Me.TotalChargeTextBox = New System.Windows.Forms.TextBox()
         Me.ContextMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CalculateContextMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearContextMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SummaryContextMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitContextMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TopMenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CalculateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ClearToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SummaryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OdometerGroupbox.SuspendLayout()
         Me.DiscountGroupbox.SuspendLayout()
         Me.ContextMenuStrip.SuspendLayout()
@@ -425,33 +425,33 @@ Partial Class RentalForm
         'ContextMenuStrip
         '
         Me.ContextMenuStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ClearToolStripMenuItem, Me.SummaryToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.ContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CalculateContextMenuItem, Me.ClearContextMenuItem, Me.SummaryContextMenuItem, Me.ExitContextMenuItem})
         Me.ContextMenuStrip.Name = "ContextMenuStrip"
         Me.ContextMenuStrip.Size = New System.Drawing.Size(126, 92)
         '
-        'FileToolStripMenuItem
+        'CalculateContextMenuItem
         '
-        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.FileToolStripMenuItem.Text = "&Calculate"
+        Me.CalculateContextMenuItem.Name = "CalculateContextMenuItem"
+        Me.CalculateContextMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.CalculateContextMenuItem.Text = "&Calculate"
         '
-        'ClearToolStripMenuItem
+        'ClearContextMenuItem
         '
-        Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.ClearToolStripMenuItem.Text = "Cl&ear"
+        Me.ClearContextMenuItem.Name = "ClearContextMenuItem"
+        Me.ClearContextMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.ClearContextMenuItem.Text = "Cl&ear"
         '
-        'SummaryToolStripMenuItem
+        'SummaryContextMenuItem
         '
-        Me.SummaryToolStripMenuItem.Name = "SummaryToolStripMenuItem"
-        Me.SummaryToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.SummaryToolStripMenuItem.Text = "&Summary"
+        Me.SummaryContextMenuItem.Name = "SummaryContextMenuItem"
+        Me.SummaryContextMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.SummaryContextMenuItem.Text = "&Summary"
         '
-        'ExitToolStripMenuItem
+        'ExitContextMenuItem
         '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
-        Me.ExitToolStripMenuItem.Text = "E&xit"
+        Me.ExitContextMenuItem.Name = "ExitContextMenuItem"
+        Me.ExitContextMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.ExitContextMenuItem.Text = "E&xit"
         '
         'TopMenuStrip
         '
@@ -466,7 +466,7 @@ Partial Class RentalForm
         '
         'FileToolStripMenuItem1
         '
-        Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CalculateToolStripMenuItem, Me.ClearToolStripMenuItem1, Me.SummaryToolStripMenuItem1, Me.ExitToolStripMenuItem1})
+        Me.FileToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CalculateToolStripMenuItem, Me.ClearToolStripMenuItem, Me.SummaryToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem1.Name = "FileToolStripMenuItem1"
         Me.FileToolStripMenuItem1.Size = New System.Drawing.Size(37, 22)
         Me.FileToolStripMenuItem1.Text = "&File"
@@ -474,26 +474,26 @@ Partial Class RentalForm
         'CalculateToolStripMenuItem
         '
         Me.CalculateToolStripMenuItem.Name = "CalculateToolStripMenuItem"
-        Me.CalculateToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.CalculateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CalculateToolStripMenuItem.Text = "&Calculate"
         '
-        'ClearToolStripMenuItem1
+        'ClearToolStripMenuItem
         '
-        Me.ClearToolStripMenuItem1.Name = "ClearToolStripMenuItem1"
-        Me.ClearToolStripMenuItem1.Size = New System.Drawing.Size(125, 22)
-        Me.ClearToolStripMenuItem1.Text = "Cl&ear"
+        Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClearToolStripMenuItem.Text = "Cl&ear"
         '
-        'SummaryToolStripMenuItem1
+        'SummaryToolStripMenuItem
         '
-        Me.SummaryToolStripMenuItem1.Name = "SummaryToolStripMenuItem1"
-        Me.SummaryToolStripMenuItem1.Size = New System.Drawing.Size(125, 22)
-        Me.SummaryToolStripMenuItem1.Text = "&Summary"
+        Me.SummaryToolStripMenuItem.Name = "SummaryToolStripMenuItem"
+        Me.SummaryToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SummaryToolStripMenuItem.Text = "&Summary"
         '
-        'ExitToolStripMenuItem1
+        'ExitToolStripMenuItem
         '
-        Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(125, 22)
-        Me.ExitToolStripMenuItem1.Text = "&Exit"
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Text = "&Exit"
         '
         'RentalForm
         '
@@ -592,14 +592,14 @@ Partial Class RentalForm
     Friend WithEvents TotalDiscountTextBox As TextBox
     Friend WithEvents TotalChargeTextBox As TextBox
     Friend WithEvents ContextMenuStrip As ContextMenuStrip
-    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CalculateContextMenuItem As ToolStripMenuItem
     Friend WithEvents TopMenuStrip As MenuStrip
+    Friend WithEvents ClearContextMenuItem As ToolStripMenuItem
+    Friend WithEvents SummaryContextMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitContextMenuItem As ToolStripMenuItem
+    Friend WithEvents FileToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents CalculateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SummaryToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FileToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents CalculateToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ClearToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents SummaryToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
 End Class

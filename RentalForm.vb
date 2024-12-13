@@ -253,10 +253,42 @@ Public Class RentalForm
         TotalCharges(totalCharge)
     End Sub
 
-    Private Sub CalculateButton_Click(sender As Object, e As EventArgs) Handles CalculateButton.Click, CalculateToolStripMenuItem.Click
+    ''' <summary>
+    ''' Clears the form back to blank
+    ''' </summary>
+    Sub ClearForm()
+        NameTextBox.Text = ""
+        AddressTextBox.Text = ""
+        CityTextBox.Text = ""
+        StateTextBox.Text = ""
+        ZipCodeTextBox.Text = ""
+        BeginOdometerTextBox.Text = ""
+        EndOdometerTextBox.Text = ""
+        DaysTextBox.Text = ""
+
+        MilesradioButton.Checked = True
+        AAAcheckbox.Checked = False
+        Seniorcheckbox.Checked = False
+
+        TotalMilesTextBox.Text = ""
+        MileageChargeTextBox.Text = ""
+        DayChargeTextBox.Text = ""
+        TotalDiscountTextBox.Text = ""
+        TotalChargeTextBox.Text = ""
+    End Sub
+
+    Private Sub CalculateButton_Click(sender As Object, e As EventArgs) Handles CalculateButton.Click, CalculateToolStripMenuItem.Click, CalculateContextMenuItem.Click
         If ValidInputs() Then
             CalculateRental()
             TotalCustomers(True)
         End If
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click, ClearContextMenuItem.Click, ClearToolStripMenuItem.Click
+        ClearForm()
+    End Sub
+
+    Private Sub SummaryButton_Click(sender As Object, e As EventArgs) Handles SummaryButton.Click, SummaryContextMenuItem.Click, SummaryToolStripMenuItem.Click
+
     End Sub
 End Class
