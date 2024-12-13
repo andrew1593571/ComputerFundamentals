@@ -122,6 +122,9 @@
     <EmbeddedResource Include="SplashScreenForm.resx">
       <DependentUpon>SplashScreenForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StansGroceryForm.resx">
+      <DependentUpon>StansGroceryForm.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
