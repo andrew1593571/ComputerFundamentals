@@ -291,4 +291,10 @@ Public Class RentalForm
     Private Sub SummaryButton_Click(sender As Object, e As EventArgs) Handles SummaryButton.Click, SummaryContextMenuItem.Click, SummaryToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitContextMenuItem.Click, ExitToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to Exit?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+            Me.Close()
+        End If
+    End Sub
 End Class

@@ -474,25 +474,25 @@ Partial Class RentalForm
         'CalculateToolStripMenuItem
         '
         Me.CalculateToolStripMenuItem.Name = "CalculateToolStripMenuItem"
-        Me.CalculateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CalculateToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.CalculateToolStripMenuItem.Text = "&Calculate"
         '
         'ClearToolStripMenuItem
         '
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.ClearToolStripMenuItem.Text = "Cl&ear"
         '
         'SummaryToolStripMenuItem
         '
         Me.SummaryToolStripMenuItem.Name = "SummaryToolStripMenuItem"
-        Me.SummaryToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SummaryToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.SummaryToolStripMenuItem.Text = "&Summary"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.ExitToolStripMenuItem.Text = "&Exit"
         '
         'RentalForm
