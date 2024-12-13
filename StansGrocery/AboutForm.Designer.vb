@@ -28,7 +28,7 @@ Partial Class AboutForm
         '
         'OkButton
         '
-        Me.OkButton.Location = New System.Drawing.Point(244, 196)
+        Me.OkButton.Location = New System.Drawing.Point(154, 75)
         Me.OkButton.Name = "OkButton"
         Me.OkButton.Size = New System.Drawing.Size(106, 50)
         Me.OkButton.TabIndex = 0
@@ -40,15 +40,16 @@ Partial Class AboutForm
         Me.AboutLabel.AutoSize = True
         Me.AboutLabel.Location = New System.Drawing.Point(0, 0)
         Me.AboutLabel.Name = "AboutLabel"
-        Me.AboutLabel.Size = New System.Drawing.Size(72, 39)
+        Me.AboutLabel.Size = New System.Drawing.Size(260, 65)
         Me.AboutLabel.TabIndex = 1
-        Me.AboutLabel.Text = "Andrew Keller" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "RCET2265" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Fall 2024" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.AboutLabel.Text = "Andrew Keller" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "RCET2265" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Fall 2024" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Stans Grocery" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "https://github.com/andrew15935" &
+    "71/StansGrocery.git"
         '
         'AboutForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(271, 137)
         Me.Controls.Add(Me.AboutLabel)
         Me.Controls.Add(Me.OkButton)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
