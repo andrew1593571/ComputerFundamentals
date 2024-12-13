@@ -277,6 +277,19 @@ Public Class RentalForm
         TotalChargeTextBox.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Shows a summary of the total number of customers, total charges, and total mileage
+    ''' </summary>
+    Sub ShowSummary()
+        Dim userMessage As String
+
+        userMessage = "Total Customers:".PadRight(25) & CStr(TotalCustomers()) & vbNewLine
+        userMessage &= "Total Miles Driven:".PadRight(25) & CStr(TotalMiles()) & " mi" & vbNewLine
+        userMessage &= "Total Charges:".PadRight(27) & $"${CStr(TotalCharges())}"
+
+        MsgBox(userMessage)
+    End Sub
+
     Private Sub CalculateButton_Click(sender As Object, e As EventArgs) Handles CalculateButton.Click, CalculateToolStripMenuItem.Click, CalculateContextMenuItem.Click
         If ValidInputs() Then
             CalculateRental()
@@ -289,7 +302,7 @@ Public Class RentalForm
     End Sub
 
     Private Sub SummaryButton_Click(sender As Object, e As EventArgs) Handles SummaryButton.Click, SummaryContextMenuItem.Click, SummaryToolStripMenuItem.Click
-
+        ShowSummary()
     End Sub
 
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click, ExitContextMenuItem.Click, ExitToolStripMenuItem.Click

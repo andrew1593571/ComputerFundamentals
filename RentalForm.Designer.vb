@@ -154,6 +154,7 @@ Partial Class RentalForm
         Me.NameTextBox.Name = "NameTextBox"
         Me.NameTextBox.Size = New System.Drawing.Size(100, 20)
         Me.NameTextBox.TabIndex = 0
+        Me.RentalFormToolTip.SetToolTip(Me.NameTextBox, "Customer Full Name")
         '
         'AddressTextBox
         '
@@ -161,6 +162,7 @@ Partial Class RentalForm
         Me.AddressTextBox.Name = "AddressTextBox"
         Me.AddressTextBox.Size = New System.Drawing.Size(100, 20)
         Me.AddressTextBox.TabIndex = 1
+        Me.RentalFormToolTip.SetToolTip(Me.AddressTextBox, "Customer Address")
         '
         'CityTextBox
         '
@@ -168,6 +170,7 @@ Partial Class RentalForm
         Me.CityTextBox.Name = "CityTextBox"
         Me.CityTextBox.Size = New System.Drawing.Size(100, 20)
         Me.CityTextBox.TabIndex = 2
+        Me.RentalFormToolTip.SetToolTip(Me.CityTextBox, "Customer City")
         '
         'StateTextBox
         '
@@ -175,6 +178,7 @@ Partial Class RentalForm
         Me.StateTextBox.Name = "StateTextBox"
         Me.StateTextBox.Size = New System.Drawing.Size(100, 20)
         Me.StateTextBox.TabIndex = 3
+        Me.RentalFormToolTip.SetToolTip(Me.StateTextBox, "Customer State")
         '
         'ZipCodeTextBox
         '
@@ -182,6 +186,7 @@ Partial Class RentalForm
         Me.ZipCodeTextBox.Name = "ZipCodeTextBox"
         Me.ZipCodeTextBox.Size = New System.Drawing.Size(100, 20)
         Me.ZipCodeTextBox.TabIndex = 4
+        Me.RentalFormToolTip.SetToolTip(Me.ZipCodeTextBox, "Customer Zip Code")
         '
         'BeginOdometerTextBox
         '
@@ -189,6 +194,7 @@ Partial Class RentalForm
         Me.BeginOdometerTextBox.Name = "BeginOdometerTextBox"
         Me.BeginOdometerTextBox.Size = New System.Drawing.Size(100, 20)
         Me.BeginOdometerTextBox.TabIndex = 5
+        Me.RentalFormToolTip.SetToolTip(Me.BeginOdometerTextBox, "Odometer Reading at Start of Rental")
         '
         'EndOdometerTextBox
         '
@@ -196,6 +202,7 @@ Partial Class RentalForm
         Me.EndOdometerTextBox.Name = "EndOdometerTextBox"
         Me.EndOdometerTextBox.Size = New System.Drawing.Size(100, 20)
         Me.EndOdometerTextBox.TabIndex = 6
+        Me.RentalFormToolTip.SetToolTip(Me.EndOdometerTextBox, "Odometer Reading at End of Rental")
         '
         'DaysTextBox
         '
@@ -203,6 +210,7 @@ Partial Class RentalForm
         Me.DaysTextBox.Name = "DaysTextBox"
         Me.DaysTextBox.Size = New System.Drawing.Size(100, 20)
         Me.DaysTextBox.TabIndex = 7
+        Me.RentalFormToolTip.SetToolTip(Me.DaysTextBox, "Number of Days of Rental")
         '
         'OdometerGroupbox
         '
@@ -224,6 +232,7 @@ Partial Class RentalForm
         Me.KilometersradioButton.Size = New System.Drawing.Size(105, 20)
         Me.KilometersradioButton.TabIndex = 1
         Me.KilometersradioButton.Text = "Kilometers"
+        Me.RentalFormToolTip.SetToolTip(Me.KilometersradioButton, "Odometer is in Kilometers")
         Me.KilometersradioButton.UseVisualStyleBackColor = True
         '
         'MilesradioButton
@@ -236,6 +245,7 @@ Partial Class RentalForm
         Me.MilesradioButton.TabIndex = 0
         Me.MilesradioButton.TabStop = True
         Me.MilesradioButton.Text = "Miles"
+        Me.RentalFormToolTip.SetToolTip(Me.MilesradioButton, "Odometer is in Miles")
         Me.MilesradioButton.UseVisualStyleBackColor = True
         '
         'DiscountGroupbox
@@ -258,6 +268,7 @@ Partial Class RentalForm
         Me.Seniorcheckbox.Size = New System.Drawing.Size(210, 20)
         Me.Seniorcheckbox.TabIndex = 1
         Me.Seniorcheckbox.Text = "Senior Citizen Discount"
+        Me.RentalFormToolTip.SetToolTip(Me.Seniorcheckbox, "Customer is a Senior Citizen")
         Me.Seniorcheckbox.UseVisualStyleBackColor = True
         '
         'AAAcheckbox
@@ -268,6 +279,7 @@ Partial Class RentalForm
         Me.AAAcheckbox.Size = New System.Drawing.Size(178, 20)
         Me.AAAcheckbox.TabIndex = 0
         Me.AAAcheckbox.Text = "AAA Member Discount"
+        Me.RentalFormToolTip.SetToolTip(Me.AAAcheckbox, "Customer is a AAA member")
         Me.AAAcheckbox.UseVisualStyleBackColor = True
         '
         'CalculateButton
@@ -277,6 +289,7 @@ Partial Class RentalForm
         Me.CalculateButton.Size = New System.Drawing.Size(75, 23)
         Me.CalculateButton.TabIndex = 10
         Me.CalculateButton.Text = "&Calculate"
+        Me.RentalFormToolTip.SetToolTip(Me.CalculateButton, "Calculates Rental Rates")
         Me.CalculateButton.UseVisualStyleBackColor = True
         '
         'ClearButton
@@ -286,6 +299,7 @@ Partial Class RentalForm
         Me.ClearButton.Size = New System.Drawing.Size(75, 23)
         Me.ClearButton.TabIndex = 11
         Me.ClearButton.Text = "Cl&ear"
+        Me.RentalFormToolTip.SetToolTip(Me.ClearButton, "Clears the Form")
         Me.ClearButton.UseVisualStyleBackColor = True
         '
         'ExitButton
@@ -295,6 +309,7 @@ Partial Class RentalForm
         Me.ExitButton.Size = New System.Drawing.Size(75, 23)
         Me.ExitButton.TabIndex = 13
         Me.ExitButton.Text = "&Exit"
+        Me.RentalFormToolTip.SetToolTip(Me.ExitButton, "Closes the Form")
         Me.ExitButton.UseVisualStyleBackColor = True
         '
         'MilesDrivenLabel
@@ -370,6 +385,7 @@ Partial Class RentalForm
         Me.SummaryButton.Size = New System.Drawing.Size(75, 23)
         Me.SummaryButton.TabIndex = 12
         Me.SummaryButton.Text = "&Summary"
+        Me.RentalFormToolTip.SetToolTip(Me.SummaryButton, "Displays a Summary of All Customers")
         Me.SummaryButton.UseVisualStyleBackColor = True
         '
         'TotalMilesTextBox
@@ -381,6 +397,7 @@ Partial Class RentalForm
         Me.TotalMilesTextBox.TabIndex = 34
         Me.TotalMilesTextBox.TabStop = False
         Me.TotalMilesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.RentalFormToolTip.SetToolTip(Me.TotalMilesTextBox, "Miles Driven by the Customer")
         '
         'MileageChargeTextBox
         '
@@ -391,6 +408,7 @@ Partial Class RentalForm
         Me.MileageChargeTextBox.TabIndex = 35
         Me.MileageChargeTextBox.TabStop = False
         Me.MileageChargeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.RentalFormToolTip.SetToolTip(Me.MileageChargeTextBox, "Mileage Charge Total")
         '
         'DayChargeTextBox
         '
@@ -401,6 +419,7 @@ Partial Class RentalForm
         Me.DayChargeTextBox.TabIndex = 36
         Me.DayChargeTextBox.TabStop = False
         Me.DayChargeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.RentalFormToolTip.SetToolTip(Me.DayChargeTextBox, "Day Charge Total")
         '
         'TotalDiscountTextBox
         '
@@ -411,6 +430,7 @@ Partial Class RentalForm
         Me.TotalDiscountTextBox.TabIndex = 37
         Me.TotalDiscountTextBox.TabStop = False
         Me.TotalDiscountTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.RentalFormToolTip.SetToolTip(Me.TotalDiscountTextBox, "Customer Discount")
         '
         'TotalChargeTextBox
         '
@@ -421,6 +441,7 @@ Partial Class RentalForm
         Me.TotalChargeTextBox.TabIndex = 38
         Me.TotalChargeTextBox.TabStop = False
         Me.TotalChargeTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.RentalFormToolTip.SetToolTip(Me.TotalChargeTextBox, "Total Owed by Customer")
         '
         'ContextMenuStrip
         '
@@ -539,7 +560,6 @@ Partial Class RentalForm
         Me.Name = "RentalForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Acme Car Rental Service"
-        Me.RentalFormToolTip.SetToolTip(Me, "No Tool Tip Yet!!")
         Me.OdometerGroupbox.ResumeLayout(False)
         Me.OdometerGroupbox.PerformLayout()
         Me.DiscountGroupbox.ResumeLayout(False)
