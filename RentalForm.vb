@@ -10,6 +10,40 @@ Option Compare Binary
 
 Public Class RentalForm
 
+    ''' <summary>
+    ''' Stores the current difference in the odometer readings
+    ''' </summary>
+    ''' <param name="difference"></param>
+    ''' <returns></returns>
+    Function storeOdometerDifference(Optional difference As Integer = 0) As Integer
+        Static _odometerDifference As Integer
+
+        If difference > 0 Then
+            _odometerDifference = difference
+        End If
+
+        Return _odometerDifference
+    End Function
+
+    ''' <summary>
+    ''' Stores the number of days as an integer
+    ''' </summary>
+    ''' <param name="days"></param>
+    ''' <returns></returns>
+    Function storeDays(Optional days As Integer = 0) As Integer
+        Static _days As Integer
+
+        If days > 0 Then
+            _days = days
+        End If
+
+        Return _days
+    End Function
+
+    ''' <summary>
+    ''' Returns true if the inputs are all valid
+    ''' </summary>
+    ''' <returns></returns>
     Function ValidInputs() As Boolean
         Dim valid As Boolean
         Dim focusSet As Boolean
@@ -17,6 +51,7 @@ Public Class RentalForm
         Dim startOdometer As Integer
         Dim endOdometer As Integer
         Dim odometerError As Boolean
+        Dim numberDays As Integer
 
         'Check the Name
         If NameTextBox.Text = "" Then
@@ -90,7 +125,7 @@ Public Class RentalForm
         'Check that the ending odometer is greater than the starting odometer
         If Not odometerError Then
             If endOdometer > startOdometer Then
-                'TODO store 
+                storeOdometerDifference(endOdometer - startOdometer)
 
             Else
                 userMessage &= "Ending odometer must greater than Beginning Odometer." & vbNewLine
@@ -101,14 +136,63 @@ Public Class RentalForm
             End If
         End If
 
+        'Check that the days are a number and that the value is not 0
+        Try
+            numberDays = CInt(DaysTextBox.Text)
+            If numberDays > 0 Then
+                storeDays(numberDays)
+            Else
+                userMessage &= "Number of days must be greater than 0." & vbNewLine
+            End If
+        Catch ex As Exception
+            userMessage &= "Number of days must be a whole number." & vbNewLine
+            If Not focusSet Then
+                DaysTextBox.Focus()
+                focusSet = True
+            End If
+        End Try
 
-
-
-
-
-
+        If Not focusSet Then
+            valid = True
+        Else
+            MsgBox(userMessage)
+        End If
         Return valid
     End Function
 
 
+    Sub calculateRental()
+        Dim milesTraveled As Double
+        Dim mileageCharge As Double
+
+        Select Case True
+            Case MilesradioButton.Checked
+                milesTraveled = storeOdometerDifference()
+            Case KilometersradioButton.Checked
+                milesTraveled = storeOdometerDifference() * 0.62
+        End Select
+        TotalMilesTextBox.Text = CStr(milesTraveled) & " mi"
+
+        Select Case milesTraveled
+            Case <= 200
+                mileageCharge = 0
+            Case <= 500
+                milesTraveled -= 200 'subtract out the previous 200 miles
+                mileageCharge = milesTraveled * 0.12
+            Case > 500
+                milesTraveled -= 500 'subtract out the previous 500 miles
+                mileageCharge = 300 * 0.12 'add in the charge for the 300 miles between 201 and 500
+                mileageCharge += milesTraveled * 0.1
+        End Select
+
+        MileageChargeTextBox.Text = $"${CStr(mileageCharge)}"
+
+        DayChargeTextBox.Text = $"${CStr(storeDays() * 15)}"
+    End Sub
+
+    Private Sub CalculateButton_Click(sender As Object, e As EventArgs) Handles CalculateButton.Click
+        If ValidInputs() Then
+            calculateRental()
+        End If
+    End Sub
 End Class
