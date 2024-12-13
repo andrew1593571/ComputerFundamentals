@@ -11,11 +11,52 @@ Option Compare Binary
 Public Class RentalForm
 
     ''' <summary>
+    ''' Stores the total miles driven by all customers
+    ''' </summary>
+    ''' <param name="additionalMiles"></param>
+    ''' <returns></returns>
+    Function TotalMiles(Optional additionalMiles As Double = 0) As Double
+        Static _miles As Double
+
+        _miles += additionalMiles
+
+        Return _miles
+    End Function
+
+    ''' <summary>
+    ''' Stores the total charges for all customers
+    ''' </summary>
+    ''' <param name="additionalCharge"></param>
+    ''' <returns></returns>
+    Function TotalCharges(Optional additionalCharge As Double = 0) As Double
+        Static _charges As Double
+
+        _charges += additionalCharge
+
+        Return _charges
+    End Function
+
+    ''' <summary>
+    ''' stores the number of total customers served.
+    ''' </summary>
+    ''' <param name="newCustomer"></param>
+    ''' <returns></returns>
+    Function TotalCustomers(Optional newCustomer As Boolean = False) As Integer
+        Static _totalCustomers As Integer
+
+        If newCustomer Then
+            _totalCustomers += 1
+        End If
+
+        Return _totalCustomers
+    End Function
+
+    ''' <summary>
     ''' Stores the current difference in the odometer readings
     ''' </summary>
     ''' <param name="difference"></param>
     ''' <returns></returns>
-    Function storeOdometerDifference(Optional difference As Integer = 0) As Integer
+    Function StoreOdometerDifference(Optional difference As Integer = 0) As Integer
         Static _odometerDifference As Integer
 
         If difference > 0 Then
@@ -125,7 +166,7 @@ Public Class RentalForm
         'Check that the ending odometer is greater than the starting odometer
         If Not odometerError Then
             If endOdometer > startOdometer Then
-                storeOdometerDifference(endOdometer - startOdometer)
+                StoreOdometerDifference(endOdometer - startOdometer)
 
             Else
                 userMessage &= "Ending odometer must greater than Beginning Odometer." & vbNewLine
@@ -160,18 +201,25 @@ Public Class RentalForm
         Return valid
     End Function
 
-
-    Sub calculateRental()
+    ''' <summary>
+    ''' calculates the current rental costs
+    ''' </summary>
+    Sub CalculateRental()
         Dim milesTraveled As Double
         Dim mileageCharge As Double
+        Dim dayCharge As Double
+        Dim totalCharge As Double
+        Dim discount As Double
 
         Select Case True
             Case MilesradioButton.Checked
-                milesTraveled = storeOdometerDifference()
+                milesTraveled = StoreOdometerDifference()
             Case KilometersradioButton.Checked
-                milesTraveled = storeOdometerDifference() * 0.62
+                milesTraveled = StoreOdometerDifference() * 0.62
         End Select
         TotalMilesTextBox.Text = CStr(milesTraveled) & " mi"
+
+        TotalMiles(milesTraveled)
 
         Select Case milesTraveled
             Case <= 200
@@ -187,12 +235,28 @@ Public Class RentalForm
 
         MileageChargeTextBox.Text = $"${CStr(mileageCharge)}"
 
-        DayChargeTextBox.Text = $"${CStr(storeDays() * 15)}"
+        dayCharge = storeDays() * 15
+        DayChargeTextBox.Text = $"${CStr(dayCharge)}"
+
+        totalCharge = dayCharge + mileageCharge
+        If AAAcheckbox.Checked Then 'if AAA member, apply 5% discount
+            discount += totalCharge * 0.05
+        End If
+        If Seniorcheckbox.Checked Then 'if Senior Citizen, apply 3% discount
+            discount += totalCharge * 0.03
+        End If
+        TotalDiscountTextBox.Text = $"${CStr(discount)}"
+
+        totalCharge -= discount
+        TotalChargeTextBox.Text = $"${CStr(totalCharge)}"
+
+        TotalCharges(totalCharge)
     End Sub
 
-    Private Sub CalculateButton_Click(sender As Object, e As EventArgs) Handles CalculateButton.Click
+    Private Sub CalculateButton_Click(sender As Object, e As EventArgs) Handles CalculateButton.Click, CalculateToolStripMenuItem.Click
         If ValidInputs() Then
-            calculateRental()
+            CalculateRental()
+            TotalCustomers(True)
         End If
     End Sub
 End Class
