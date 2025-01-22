@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\ForLoopExamples\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{765D6D44-8402-43DE-A4AF-4BC11590B13B}|ForLoopExamples\\ForLoopExamples.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\forloopexamples\\forloopexamples\\forloopexamples.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{765D6D44-8402-43DE-A4AF-4BC11590B13B}|ForLoopExamples\\ForLoopExamples.vbproj|solutionrelative:forloopexamples\\forloopexamples.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ForLoopExamples.vb",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\ForLoopExamples\\ForLoopExamples\\ForLoopExamples.vb",
+              "RelativeDocumentMoniker": "ForLoopExamples\\ForLoopExamples.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\ForLoopExamples\\ForLoopExamples\\ForLoopExamples.vb",
+              "RelativeToolTip": "ForLoopExamples\\ForLoopExamples.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-08-28T14:08:14.271Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

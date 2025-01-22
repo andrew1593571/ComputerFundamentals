@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\MethodCallExamples\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF789BF1-F467-4683-AB44-51FD219BDAC2}|MethodCallExamples\\MethodCallExamples.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\methodcallexamples\\methodcallexamples\\methodcallexamples.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{BF789BF1-F467-4683-AB44-51FD219BDAC2}|MethodCallExamples\\MethodCallExamples.vbproj|solutionrelative:methodcallexamples\\methodcallexamples.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MethodCallExamples.vb",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\MethodCallExamples\\MethodCallExamples\\MethodCallExamples.vb",
+              "RelativeDocumentMoniker": "MethodCallExamples\\MethodCallExamples.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\MethodCallExamples\\MethodCallExamples\\MethodCallExamples.vb",
+              "RelativeToolTip": "MethodCallExamples\\MethodCallExamples.vb",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwB8AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-08-29T14:29:16.224Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

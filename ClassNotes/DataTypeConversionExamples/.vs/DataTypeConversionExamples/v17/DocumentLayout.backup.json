@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\DataTypeConversionExamples\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A4974389-A150-4DA8-9139-005E7C5F790F}|DataTypeConversionExamples\\DataTypeConversionExamples.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\datatypeconversionexamples\\datatypeconversionexamples\\datatypeconversionexamples.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{A4974389-A150-4DA8-9139-005E7C5F790F}|DataTypeConversionExamples\\DataTypeConversionExamples.vbproj|solutionrelative:datatypeconversionexamples\\datatypeconversionexamples.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataTypeConversionExamples.vb",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\DataTypeConversionExamples\\DataTypeConversionExamples\\DataTypeConversionExamples.vb",
+              "RelativeDocumentMoniker": "DataTypeConversionExamples\\DataTypeConversionExamples.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\DataTypeConversionExamples\\DataTypeConversionExamples\\DataTypeConversionExamples.vb",
+              "RelativeToolTip": "DataTypeConversionExamples\\DataTypeConversionExamples.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-08-28T14:38:44.715Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

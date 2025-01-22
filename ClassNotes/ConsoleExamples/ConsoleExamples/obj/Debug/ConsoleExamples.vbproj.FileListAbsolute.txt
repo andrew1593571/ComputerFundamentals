@@ -1,0 +1,11 @@
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.vbproj.AssemblyReference.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.Resources.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.vbproj.GenerateResource.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.vbproj.CoreCompileInputs.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\bin\Debug\ConsoleExamples.exe.config
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\bin\Debug\ConsoleExamples.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\bin\Debug\ConsoleExamples.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\bin\Debug\ConsoleExamples.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\ConsoleExamples\ConsoleExamples\obj\Debug\ConsoleExamples.pdb

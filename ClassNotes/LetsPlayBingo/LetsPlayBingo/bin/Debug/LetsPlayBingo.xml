@@ -1,0 +1,48 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+LetsPlayBingo
+</name>
+</assembly>
+<members>
+<member name="T:LetsPlayBingo.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:LetsPlayBingo.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:LetsPlayBingo.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:LetsPlayBingo.LetsPlayBingo.Display(System.Boolean[0:,0:]@)">
+ <summary>
+ Displays the formatted game status on the console
+ </summary>
+ <param name="ballCage"></param>
+</member>
+<member name="M:LetsPlayBingo.LetsPlayBingo.FormatBall(System.Int32,System.Int32)">
+ <summary>
+ Function to take a letter and number integer and convert to a formal print name.
+ </summary>
+ <param name="_letter"></param>
+ <param name="_number"></param>
+ <returns></returns>
+</member>
+<member name="M:LetsPlayBingo.LetsPlayBingo.GetRandomNumberInRange(System.Int32,System.Int32)">
+ <summary>
+ Get a random integer within the specified range. Inclusive
+ </summary>
+ <param name="Max"></param>
+ <param name="Min"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

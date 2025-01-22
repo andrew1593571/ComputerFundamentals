@@ -1,0 +1,11 @@
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\bin\Debug\WorkingWithFilesExample.exe.config
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\bin\Debug\WorkingWithFilesExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\bin\Debug\WorkingWithFilesExample.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\bin\Debug\WorkingWithFilesExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.vbproj.AssemblyReference.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.Resources.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.vbproj.GenerateResource.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.vbproj.CoreCompileInputs.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithFilesExample\WorkingWithFilesExample\obj\Debug\WorkingWithFilesExample.pdb

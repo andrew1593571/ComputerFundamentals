@@ -1,0 +1,11 @@
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\bin\Debug\MethodCallExamples.exe.config
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\bin\Debug\MethodCallExamples.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\bin\Debug\MethodCallExamples.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\bin\Debug\MethodCallExamples.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.vbproj.AssemblyReference.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.Resources.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.vbproj.GenerateResource.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.vbproj.CoreCompileInputs.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\MethodCallExamples\MethodCallExamples\obj\Debug\MethodCallExamples.pdb

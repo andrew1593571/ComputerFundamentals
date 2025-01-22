@@ -1,0 +1,12 @@
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.vbproj.AssemblyReference.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.GraphicsExampleForm.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.Resources.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.vbproj.GenerateResource.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.vbproj.CoreCompileInputs.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\bin\Debug\GraphicsFormExample.exe.config
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\bin\Debug\GraphicsFormExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\bin\Debug\GraphicsFormExample.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\bin\Debug\GraphicsFormExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\GraphicsFormExample\GraphicsFormExample\obj\Debug\GraphicsFormExample.pdb

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MethodCallExamples
+</name>
+</assembly>
+<members>
+<member name="T:MethodCallExamples.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:MethodCallExamples.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:MethodCallExamples.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:MethodCallExamples.MethodCallExamples.ExampleSub">
+ <summary>
+ Example of a simple Sub Routine
+ </summary>
+</member>
+<member name="M:MethodCallExamples.MethodCallExamples.DoMath(System.Int32)">
+ <summary>
+ takes a value then adds 5 and prints the equation
+ </summary>
+ <param name="secondNumber"></param>
+</member>
+<member name="M:MethodCallExamples.MethodCallExamples.SumOf(System.Int32,System.Int32)">
+ <summary>
+ Calculates the sum of two whole numbers
+ </summary>
+ <param name="firstNumber"></param>
+ <param name="secondNumber"></param>
+ <returns>Integer</returns>
+</member>
+<member name="M:MethodCallExamples.MethodCallExamples.RunningTotal(System.Int32,System.Boolean)">
+ <summary>
+ If clear is true, returns 0. If clear is false, adds current number to total and returns total.
+ </summary>
+ <param name="currentNumber"></param>
+ <param name="clear"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

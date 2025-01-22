@@ -1,0 +1,11 @@
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\bin\Debug\WorkingWithArraysExample.exe.config
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\bin\Debug\WorkingWithArraysExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\bin\Debug\WorkingWithArraysExample.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\bin\Debug\WorkingWithArraysExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.vbproj.AssemblyReference.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.Resources.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.vbproj.GenerateResource.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.vbproj.CoreCompileInputs.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\WorkingWithArraysExample\WorkingWithArraysExample\obj\Debug\WorkingWithArraysExample.pdb

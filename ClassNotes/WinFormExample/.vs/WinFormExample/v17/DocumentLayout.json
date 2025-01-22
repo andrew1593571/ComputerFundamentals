@@ -1,0 +1,112 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\winformexample\\winformexample\\aboutform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|solutionrelative:winformexample\\aboutform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\winformexample\\winformexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|solutionrelative:winformexample\\winformexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|WinFormExample||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\winformexample\\winformexample\\aboutform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|solutionrelative:winformexample\\aboutform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\winformexample\\winformexample\\winformexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|solutionrelative:winformexample\\winformexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58509412-36B5-4BA0-8407-0704B82B8ADA}|WinFormExample\\WinFormExample.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\winformexample\\winformexample\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|8998e48e-b89a-4034-b66e-353d8c1fdc2e"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AboutForm.vb",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\AboutForm.vb",
+              "RelativeDocumentMoniker": "WinFormExample\\AboutForm.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\AboutForm.vb",
+              "RelativeToolTip": "WinFormExample\\AboutForm.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-12-02T15:59:17.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AboutForm.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\AboutForm.vb",
+              "RelativeDocumentMoniker": "WinFormExample\\AboutForm.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\AboutForm.vb [Design]",
+              "RelativeToolTip": "WinFormExample\\AboutForm.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-12-02T15:56:01.889Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WinFormExample",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\WinFormExample.vbproj",
+              "RelativeDocumentMoniker": "WinFormExample\\WinFormExample.vbproj",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\WinFormExample.vbproj",
+              "RelativeToolTip": "WinFormExample\\WinFormExample.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-01T14:22:19.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WinFormExampleForm.vb",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\WinFormExampleForm.vb",
+              "RelativeDocumentMoniker": "WinFormExample\\WinFormExampleForm.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\WinFormExampleForm.vb",
+              "RelativeToolTip": "WinFormExample\\WinFormExampleForm.vb",
+              "ViewState": "AgIAACoAAAAAAAAAAAAewDcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-09-23T14:06:07.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WinFormExampleForm.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\WinFormExampleForm.vb",
+              "RelativeDocumentMoniker": "WinFormExample\\WinFormExampleForm.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\WinFormExample\\WinFormExample\\WinFormExampleForm.vb [Design]",
+              "RelativeToolTip": "WinFormExample\\WinFormExampleForm.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-09-23T14:06:04.488Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

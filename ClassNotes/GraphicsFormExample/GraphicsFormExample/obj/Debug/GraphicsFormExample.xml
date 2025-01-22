@@ -1,0 +1,46 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+GraphicsFormExample
+</name>
+</assembly>
+<members>
+<member name="T:GraphicsFormExample.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:GraphicsFormExample.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:GraphicsFormExample.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:GraphicsFormExample.GraphicsExampleForm.DrawLine">
+ <summary>
+ Draw a line from (0,0) to (100,100)
+ </summary>
+</member>
+<member name="M:GraphicsFormExample.GraphicsExampleForm.DrawRectangle">
+ <summary>
+ Draw a rectangle from (100,100) to (300,300)
+ </summary>
+</member>
+<member name="M:GraphicsFormExample.GraphicsExampleForm.DrawCircle">
+ <summary>
+ Draw an ellipse from (100,100) to (300,300)
+ </summary>
+</member>
+<member name="M:GraphicsFormExample.GraphicsExampleForm.DrawText">
+ <summary>
+ Draw text at 50,50
+ </summary>
+</member>
+</members>
+</doc>

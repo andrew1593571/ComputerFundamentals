@@ -1,0 +1,22 @@
+"This is a test.",
+
+"Zone 1",          "Zone 2"
+"Hello  World"
+     "Leading spaces"
+         ,"Hello"
+"False is a Boolean value."
+"2/12/1969 is a date."
+#FALSE#
+#1969-02-12#
+"Wake Up Neo..."
+"Knock Knock"
+"Follow the White Rabbit"
+"Wake Up Neo..."
+"Knock Knock"
+"Follow the White Rabbit"
+"Wake Up Neo..."
+"Knock Knock"
+"Follow the White Rabbit"
+"Wake Up Neo..."
+"Knock Knock"
+"Follow the White Rabbit"

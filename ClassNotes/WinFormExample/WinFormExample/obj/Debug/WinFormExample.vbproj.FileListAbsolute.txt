@@ -1,0 +1,14 @@
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.vbproj.AssemblyReference.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.Resources.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.vbproj.GenerateResource.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.vbproj.CoreCompileInputs.cache
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\bin\Debug\WinFormExample.exe.config
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\bin\Debug\WinFormExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\bin\Debug\WinFormExample.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\bin\Debug\WinFormExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.exe
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.xml
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.pdb
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.WinFormExampleForm.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.AboutForm.resources
+C:\Users\andre\Git Repositories\ComputerFundamentals\WinFormExample\WinFormExample\obj\Debug\WinFormExample.SplashForm.resources

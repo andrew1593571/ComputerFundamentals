@@ -1,0 +1,61 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\GraphicsFormExample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E20C2797-2B3B-45D5-BF37-B6A627B7FF2E}|GraphicsFormExample\\GraphicsFormExample.vbproj|c:\\users\\andre\\git repositories\\computerfundamentals\\graphicsformexample\\graphicsformexample\\graphicsexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{E20C2797-2B3B-45D5-BF37-B6A627B7FF2E}|GraphicsFormExample\\GraphicsFormExample.vbproj|solutionrelative:graphicsformexample\\graphicsexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E20C2797-2B3B-45D5-BF37-B6A627B7FF2E}|GraphicsFormExample\\GraphicsFormExample.vbproj|C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\GraphicsFormExample\\graphicsformexample\\graphicsexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{E20C2797-2B3B-45D5-BF37-B6A627B7FF2E}|GraphicsFormExample\\GraphicsFormExample.vbproj|solutionrelative:graphicsformexample\\graphicsexampleform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GraphicsExampleForm.vb",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\GraphicsFormExample\\GraphicsFormExample\\GraphicsExampleForm.vb",
+              "RelativeDocumentMoniker": "GraphicsFormExample\\GraphicsExampleForm.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\GraphicsFormExample\\GraphicsFormExample\\GraphicsExampleForm.vb",
+              "RelativeToolTip": "GraphicsFormExample\\GraphicsExampleForm.vb",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAIwO4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-10-02T14:13:41.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GraphicsExampleForm.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\GraphicsFormExample\\GraphicsFormExample\\GraphicsExampleForm.vb",
+              "RelativeDocumentMoniker": "GraphicsFormExample\\GraphicsExampleForm.vb",
+              "ToolTip": "C:\\Users\\andre\\Git Repositories\\ComputerFundamentals\\GraphicsFormExample\\GraphicsFormExample\\GraphicsExampleForm.vb [Design]",
+              "RelativeToolTip": "GraphicsFormExample\\GraphicsExampleForm.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-10-02T14:08:38.969Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
